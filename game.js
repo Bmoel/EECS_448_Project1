@@ -3,7 +3,8 @@ let context; //global context
 
 //check for dom content loaded and add a click event to all class square elements
 document.addEventListener('DOMContentLoaded', () => {
-
+    canvas = document.querySelector("#myCanvas");
+    context = canvas.getContext("2d");
     const square = document.querySelectorAll('.square')
 
     square.forEach(id => {
@@ -40,4 +41,16 @@ function checkHit () {
         player2array[this.id] = 'hit'
         console.log(player2array)
     }
+}
+
+//Draws that current animation frame in according to what it tells to print
+function draw() {
+    context.canvas.width = window.innerWidth;
+    context.canvas.height = window.innerHeight;
+    tick();
+}
+
+//Requests the current animation frame
+function tick() {
+    window.requestAnimationFrame(draw);
 }
