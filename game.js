@@ -1,5 +1,6 @@
 let canvas; //global canvas
 let context; //global context
+let is_player_one = true; //player_one = 1 --- player_two = 2
 
 //check for dom content loaded and add a click event to all class square elements
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     square.forEach(id => {
         id.addEventListener('click', checkHit)
     })
-
+    draw();
 })
 
 let turn = -1;
@@ -47,10 +48,36 @@ function checkHit () {
 function draw() {
     context.canvas.width = window.innerWidth;
     context.canvas.height = window.innerHeight;
-    tick();
+    context.clearRect(0,0,canvas.width,canvas.height);
+    if (in_boat_selcection) { //if game is in the selection phase
+        if(is_player_one) {
+            player_one_place_ships(); //function in boat_selection.js
+            is_player_one = false;
+        } 
+        else {
+            player_two_place_ships(); //function in boat_selection.js
+            is_player_one = true;
+        }
+    }
+    else if(in_combat) { //if game is in the combat phase
+        if(is_player_one) {
+
+        }
+        else {
+
+        }
+    }
+    if(check_game_over() == false) { //recalls draw function if check_game_over returns false (does this through tick() function)
+        tick();
+    }
 }
 
 //Requests the current animation frame
 function tick() {
     window.requestAnimationFrame(draw);
+}
+
+//Function to check if game is over
+function check_game_over() {
+
 }

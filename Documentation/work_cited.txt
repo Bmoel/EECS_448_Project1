@@ -3,3 +3,7 @@ Document for listing any outside work referenced
 9/9/2021 - https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window
 Learned from this webpage in order to scale the size of the html canvas with respect to the user's window size
 Changes in styles.css (Lines 1 - 5) and game.js (Lines 48-49)
+
+9/10 - https://stackoverflow.com/questions/11996257/the-character-encoding-of-the-html-document-was-not-declared
+Had some trouble with the encoding of the html file, this linked helped fix the issue
+Changes in index.html (Lines 3-4)

@@ -1,0 +1,1 @@
+let in_combat = false;
