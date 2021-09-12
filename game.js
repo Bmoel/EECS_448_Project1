@@ -120,6 +120,28 @@ var Ship = function(name, location) {
 };
 };
 
+var sunk  = function(){
+ 
+  //check ship is sunk//
+   var ship1 = ship1.checkSunk();
+   var ship2 = ship2.checkSunk();
+   var ship3 = ship3.checkSunk();
+   var ship4 = ship4.checkSunk();
+   var ship5 = ship5.checkSunk();
+   var ship6 = ship6.checkSunk();
+
+// if ship is sunnk//
+   for(var i = 0; i < arry.length; i++) {
+        if(arry[i].sunk === true) {
+          var call =  document.addEventListener(arry.name)；
+          
+      }
+
+          game.Over();
+          
+}
+}
+
 //Commented this out because it was causing errors
 // Over: function(){  //
 //   for (var i = 0; i < arry.length; i++) {
