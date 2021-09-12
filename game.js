@@ -81,3 +81,30 @@ function tick() {
 function check_game_over() {
 
 }
+
+
+var Ship = function(name, location) {
+
+  this.name = name ;
+  this. location = location;
+  this. sunk = false;
+
+  this. Checksunk = function(){
+    for (var i = 0; i < location.length; i++) {
+            if (location[i].hit !== true) {
+                return false;
+            }
+  }
+  this.sunk = true ;
+};
+};
+
+Over: function(){  //
+  for (var i = 0; i < arry.length; i++) {
+    if(arr[i].sunk !== true) {
+      return false;
+    }
+    }
+    this.ship.Over = true;
+},
+}
