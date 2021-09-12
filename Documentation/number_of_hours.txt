@@ -1,0 +1,15 @@
+File to store the team's thoughts on the number of hours requires to finish the project
+
+Jiayi Fu estimate - 30hrs
+Samuel Jerguson estimmate - 35hrs
+Alec Mcglynn estimate - 30hrs
+Benjamin Moeller estimate - 40hrs
+Blake Richmeier estimate - 30hrs
+
+Average Hours Estimate - 
+
+How we got to that conclusion:
+We each got to the estimate by taking how many hours previous hours have taken, and then multiplying it by the number of people
+So for example if we thought that each person would need to spend eight hours on the project, 8*5 would be 40 hours
+Overall since this is our first project, we are ultimately just making an educated guess
+Future projects will likely have more accurate estimates

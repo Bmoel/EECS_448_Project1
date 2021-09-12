@@ -133,7 +133,7 @@ var sunk  = function(){
 // if ship is sunnk//
    for(var i = 0; i < arry.length; i++) {
         if(arry[i].sunk === true) {
-          var call =  document.addEventListener(arry.name)；
+          var call =  document.addEventListener(arry.name);
           
       }
 

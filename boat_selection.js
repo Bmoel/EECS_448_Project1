@@ -25,28 +25,28 @@ function place_ships() {
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=1 block",600,100);
     }
-    else if(num_of_ships == 2 & more_ships == true) {
+    else if(num_of_ships == 2 && more_ships == true) {
         console.log(previous_click);
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=2 block",600,100);
     }
-    else if(num_of_ships == 3 & more_ships == true) {
+    else if(num_of_ships == 3 && more_ships == true) {
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=3 block",600,100);
     }
-    else if(num_of_ships == 4 & more_ships == true) {
+    else if(num_of_ships == 4 && more_ships == true) {
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=4 block",600,100);
     }
-    else if(num_of_ships == 5 & more_ships == true) {
+    else if(num_of_ships == 5 && more_ships == true) {
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=5 block",600,100);
     }
-    else if(num_of_ships == 6 & more_ships == true){
+    else if(num_of_ships == 6 && more_ships == true){
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=6 block",600,100);
