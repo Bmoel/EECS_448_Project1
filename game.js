@@ -1,6 +1,6 @@
 let canvas; //global canvas
 let context; //global context
-let is_player_one = true; //player_one = 1 --- player_two = 2
+let is_player_one = true; //bool to track current player
 
 //check for dom content loaded and add a click event to all class square elements
 document.addEventListener('DOMContentLoaded', () => {
@@ -87,7 +87,12 @@ function check_game_over() {
 function print_board() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
     context.font = "Bold 12pt Candara";
-    context.fillText("Player" + (+is_player_one),600,50);
+    if(is_player_one) {
+        context.fillText("Player1",600,50);
+    }
+    else {
+        context.fillText("Player2",600,50);
+    }
     context.font = "15pt Candara";
     for(let i = 1; i <= 9; i++) {
         context.fillText(i,8,56*(i));
@@ -115,6 +120,7 @@ var Ship = function(name, location) {
 };
 };
 
+//Commented this out because it was causing errors
 // Over: function(){  //
 //   for (var i = 0; i < arry.length; i++) {
 //     if(arr[i].sunk !== true) {

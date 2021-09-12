@@ -4,9 +4,8 @@ let ship_inc = 1;
 let previous_click;
 let more_ships = false;
 var yes_button;
-var body1;
+var body;
 var no_button;
-var body2;
 
 //NOT COMPLETE: For now helps put numbers in the squares, but needs to be optimized
 function boat_sel_click() {
@@ -64,14 +63,24 @@ function ask_more_ships() {
     no_button = document.createElement("no_button");
     no_button.innerHTML = "No";
     body.appendChild(no_button);
-    context.fillText("Would you like to add ",600,150);
-    context.fillText("another ship of size=2?",600,175);
+    if(num_of_ships < 6) {
+        context.fillText("Would you like to add ",600,150);
+        context.fillText("another ship?",600,175);
+    }
+    else {
+        context.fillText("Ready to pass",600,150);
+        context.fillText("to player 2?",600,175);
+    }
 
     yes_button.addEventListener("click", () => {
         body.removeChild(yes_button);
         body.removeChild(no_button);
         num_of_ships++;
         more_ships = true;
+        if(num_of_ships == 7) {
+            is_player_one = false;
+            num_of_ships = 1;
+        }
         draw();
     })
 
