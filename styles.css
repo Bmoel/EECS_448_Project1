@@ -18,3 +18,27 @@ html,body {
     width: 610px;
     height: 550px;
 }
+
+yes_button {
+    position: absolute;
+    top: 185px;
+    left: 600px;
+    width: 3%;
+    height: 4%;
+    font-weight: bold;
+    font-size: 20px;
+    background: rgb(32, 138, 37);
+    border: none;
+}
+
+no_button {
+    position: absolute;
+    top: 185px;
+    left: 715px;
+    width: 3%;
+    height: 4%;
+    font-weight: bold;
+    font-size: 20px;
+    background: rgb(241, 14, 14);
+    border: none;
+}

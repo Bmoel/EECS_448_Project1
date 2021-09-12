@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     square.forEach(id => {
         id.addEventListener('click', checkHit)
+        id.addEventListener('click', boat_sel_click)
     })
     draw();
 })
@@ -30,18 +31,20 @@ const player2array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
 
 //updates player array when a click event happens NOTE: will eventually be used to print to the screen where hits/misses/empty spaces are
 function checkHit () {
-    turn++;
     console.log(this)
-    if(turn % 2 == 0){
-        console.log("player 1 turn\n")
-        player1array[this.id] = 'hit'
-        console.log(player1array)
-    }
-    else{
-        console.log("player 2 turn\n")
-        player2array[this.id] = 'hit'
-        console.log(player2array)
-    }
+    if (in_combat) {
+        turn++;
+        if(turn % 2 == 0){
+            console.log("player 1 turn\n")
+            player1array[this.id] = 'hit'
+            console.log(player1array)
+        }
+        else{
+            console.log("player 2 turn\n")
+            player2array[this.id] = 'hit'
+            console.log(player2array)
+        }
+    } 
 }
 
 //Draws that current animation frame in according to what it tells to print
@@ -49,14 +52,13 @@ function draw() {
     context.canvas.width = window.innerWidth;
     context.canvas.height = window.innerHeight;
     context.clearRect(0,0,canvas.width,canvas.height);
+    print_board();
     if (in_boat_selcection) { //if game is in the selection phase
         if(is_player_one) {
-            player_one_place_ships(); //function in boat_selection.js
-            is_player_one = false;
+            place_ships(); //function in boat_selection.js
         } 
         else {
-            player_two_place_ships(); //function in boat_selection.js
-            is_player_one = true;
+            place_ships(); //function in boat_selection.js
         }
     }
     else if(in_combat) { //if game is in the combat phase
@@ -82,6 +84,20 @@ function check_game_over() {
 
 }
 
+function print_board() {
+    let alph = ['A','B','C','D','E','F','G','H','I','J'];
+    context.font = "Bold 12pt Candara";
+    context.fillText("Player" + (+is_player_one),600,50);
+    context.font = "15pt Candara";
+    for(let i = 1; i <= 9; i++) {
+        context.fillText(i,8,56*(i));
+    }
+    context.font = "12pt Candara";
+    for(let i = 0; i < 10; i++) {
+        context.fillText(alph[i],54.5*(i+1),15);
+    }
+}
+
 
 var Ship = function(name, location) {
 
@@ -99,12 +115,12 @@ var Ship = function(name, location) {
 };
 };
 
-Over: function(){  //
-  for (var i = 0; i < arry.length; i++) {
-    if(arr[i].sunk !== true) {
-      return false;
-    }
-    }
-    this.ship.gameOver = true;
-},
-}
+// Over: function(){  //
+//   for (var i = 0; i < arry.length; i++) {
+//     if(arr[i].sunk !== true) {
+//       return false;
+//     }
+//     }
+//     this.ship.gameOver = true;
+// },
+// }
