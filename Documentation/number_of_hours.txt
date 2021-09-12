@@ -6,7 +6,7 @@ Alec Mcglynn estimate - 30hrs
 Benjamin Moeller estimate - 40hrs
 Blake Richmeier estimate - 30hrs
 
-Average Hours Estimate - 
+Average Hours Estimate - 33hrs
 
 How we got to that conclusion:
 We each got to the estimate by taking how many hours previous hours have taken, and then multiplying it by the number of people
