@@ -105,6 +105,6 @@ Over: function(){  //
       return false;
     }
     }
-    this.ship.Over = true;
+    this.ship.gameOver = true;
 },
 }
