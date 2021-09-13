@@ -3,6 +3,7 @@ let num_of_ships = 1;
 let ship_inc = 1;
 let previous_click;
 let more_ships = false;
+let boat_first_click = true;
 var yes_button;
 var body;
 var no_button;
@@ -10,9 +11,23 @@ var no_button;
 //NOT COMPLETE: For now helps put numbers in the squares, but needs to be optimized
 function boat_sel_click() {
     if(in_boat_selcection) {
-        if(ship_inc <= num_of_ships) {
-            previous_click = this.id;
+        if(boat_first_click) {
+            previous_click = parseInt(this.id);
+            this.innerHTML = num_of_ships; //not final, just using this now to print out numbers
+            ship_inc++;
+            boat_first_click = false;
+        }
+        else if(ship_inc <= num_of_ships && boat_sel_valid_move(this.id)) {
+            previous_click = parseInt(this.id);
             this.innerHTML = num_of_ships;
+            ship_inc++;
+        }
+        else if(ship_inc > num_of_ships) {
+            context.fillText("Max number of blocks placed",180,575);
+            context.fillText("Plese select yes or no",210,600);
+        }
+        else if (boat_sel_valid_move() == false) {
+            context.fillText("Invalid move, try again",180,600);
         }
         ask_more_ships();
     }
@@ -26,27 +41,31 @@ function place_ships() {
         context.fillText("first ship of size=1 block",600,100);
     }
     else if(num_of_ships == 2 && more_ships == true) {
-        console.log(previous_click);
+        boat_first_click = true;
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=2 block",600,100);
     }
     else if(num_of_ships == 3 && more_ships == true) {
+        boat_first_click = true;
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=3 block",600,100);
     }
     else if(num_of_ships == 4 && more_ships == true) {
+        boat_first_click = true;
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=4 block",600,100);
     }
     else if(num_of_ships == 5 && more_ships == true) {
+        boat_first_click = true;
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=5 block",600,100);
     }
     else if(num_of_ships == 6 && more_ships == true){
+        boat_first_click = true;
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=6 block",600,100);
@@ -67,7 +86,7 @@ function ask_more_ships() {
         context.fillText("Would you like to add ",600,150);
         context.fillText("another ship?",600,175);
     }
-    else {
+    else if (ship_inc == num_of_ships){
         context.fillText("Ready to pass",600,150);
         context.fillText("to player 2?",600,175);
     }
@@ -98,9 +117,9 @@ function ask_more_ships() {
     })
 }
 
-//supposed to help see if it is a valid move for placing next block, but not working for now
+//function to know whether the move user is making is valid or not
 function boat_sel_valid_move(num) {
-    if(num.id == previous_click+1) {
+    if(num == previous_click+1) {
         return true
     }
     else if (num == previous_click-1) {
