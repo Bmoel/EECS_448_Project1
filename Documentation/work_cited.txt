@@ -7,3 +7,7 @@ Changes in styles.css (Lines 1 - 5) and game.js (Lines 48-49)
 9/10 - https://stackoverflow.com/questions/11996257/the-character-encoding-of-the-html-document-was-not-declared
 Had some trouble with the encoding of the html file, this linked helped fix the issue
 Changes in index.html (Lines 3-4)
+
+9/14 - https://www.hongkiat.com/blog/moving-css-grid-items/
+When placing the second board, had some issues with getting the board to be on the right hand side. This article helped us find margin-left and margin-top for the css file
+Changes in styles.css (Lines 30-31)

@@ -34,10 +34,11 @@ html, body {
 
 yes_button {
     position: absolute;
-    top: 185px;
-    left: 600px;
+    top: 210px;
+    left: 690px;
     width: 3%;
     height: 4%;
+    text-align: center;
     font-weight: bold;
     font-size: 20px;
     background: rgb(32, 138, 37);
@@ -46,10 +47,11 @@ yes_button {
 
 no_button {
     position: absolute;
-    top: 185px;
-    left: 715px;
+    top: 210px;
+    left: 820px;
     width: 3%;
     height: 4%;
+    text-align: center;
     font-weight: bold;
     font-size: 20px;
     background: rgb(241, 14, 14);
