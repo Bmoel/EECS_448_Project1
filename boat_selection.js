@@ -16,6 +16,7 @@ let player_ships_placed = {
 
 //NOT COMPLETE: For now helps put numbers in the squares, but needs to be optimized
 function boat_sel_click() {
+    console.log(this);
     if(in_boat_selcection) {
         if(boat_first_click) {
             store_ship(parseInt(this.id));
@@ -138,9 +139,9 @@ function store_ship(num) {
     }
     else {
         player_ships_placed.player2 =
-            player_ships_placed.player2.slice(0,num) +
+            player_ships_placed.player2.slice(0,num-90) +
             num_of_ships +
-            player_ships_placed.player2.slice(num+1,89)
+            player_ships_placed.player2.slice((num-90)+1,89)
         checkHit(num, is_player_one)
         console.log(player_ships_placed.player2);
     }
@@ -169,17 +170,18 @@ function boat_check_valid_move(num) {
         }
     }
     else {
+        num = num-90;
         for(i = 1; i < num_of_ships; i++) {
-            if(player_ships_placed.player2.charAt(num-i) == num_of_ships) {
+            if(player_ships_placed.player2.charAt(num-i) == num_of_ships && is_horizontal) {
                 return true
             }
-            else if (player_ships_placed.player2.charAt(num+i) == num_of_ships) {
+            else if (player_ships_placed.player2.charAt(num+i) == num_of_ships && is_horizontal) {
                 return true;
             }
-            else if (player_ships_placed.player2.charAt(num-(i*10)) == num_of_ships) {
+            else if (player_ships_placed.player2.charAt(num-(i*10)) == num_of_ships && is_vertical) {
                 return true;
             }
-            else if (player_ships_placed.player2.charAt(num+(i*10)) == num_of_ships) {
+            else if (player_ships_placed.player2.charAt(num+(i*10)) == num_of_ships && is_vertical) {
                 return true;
             }
             return false;
