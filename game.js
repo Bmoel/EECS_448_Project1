@@ -88,18 +88,20 @@ function print_board() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
     context.font = "Bold 12pt Candara";
     if(is_player_one) {
-        context.fillText("Player 1",600,50);
+        context.fillText("Player 1",750,50);
     }
     else {
-        context.fillText("Player 2",600,50);
+        context.fillText("Player 2",750,50);
     }
     context.font = "15pt Candara";
     for(let i = 1; i <= 9; i++) {
         context.fillText(i,8,56*(i));
+        context.fillText(i,1000, 56*i);
     }
     context.font = "12pt Candara";
     for(let i = 0; i < 10; i++) {
         context.fillText(alph[i],54.5*(i+1),15);
+        context.fillText(alph[i],1000+(54.5*(i+1)),15);
     }
 }
 

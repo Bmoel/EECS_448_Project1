@@ -36,10 +36,10 @@ function boat_sel_click() {
             context.fillText("Please selects blocks to create",180,600);
             context.fillText("a 1x"+num_of_ships+" ship",260,625);
         }
-        
+
         if(num_of_ships < 6 && ship_inc == num_of_ships+1) {
-            context.fillText("Would you like to add ",600,150);
-            context.fillText("another ship?",600,175);
+            context.fillText("Would you like to add ",695,150);
+            context.fillText("another ship?",725,175);
             ask_more_ships();
         }
         else if (ship_inc == num_of_ships+1){
@@ -47,7 +47,7 @@ function boat_sel_click() {
             context.fillText("to player 2?",600,175);
             ask_more_ships();
         }
-    
+
     }
 }
 
@@ -56,38 +56,32 @@ function place_ships() {
     if(num_of_ships == 1) {
         reset_bools();
         ship_inc = 1;
-        context.fillText("Please select where you want the",600,75);
-        context.fillText("first ship of size=1 block",600,100);
+        print_boat_sel_inst()
     }
     else if(num_of_ships == 2 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
-        context.fillText("Please select where you want the",600,75);
-        context.fillText("first ship of size=2 block",600,100);
+        print_boat_sel_inst()
     }
     else if(num_of_ships == 3 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
-        context.fillText("Please select where you want the",600,75);
-        context.fillText("first ship of size=3 block",600,100);
+        print_boat_sel_inst()
     }
     else if(num_of_ships == 4 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
-        context.fillText("Please select where you want the",600,75);
-        context.fillText("first ship of size=4 block",600,100);
+        print_boat_sel_inst()
     }
     else if(num_of_ships == 5 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
-        context.fillText("Please select where you want the",600,75);
-        context.fillText("first ship of size=5 block",600,100);
+        print_boat_sel_inst()
     }
     else if(num_of_ships == 6 && more_ships == true){
         reset_bools();
         ship_inc = 1;
-        context.fillText("Please select where you want the",600,75);
-        context.fillText("first ship of size=6 block",600,100);
+        print_boat_sel_inst()
     }
 }
 
@@ -130,18 +124,18 @@ function ask_more_ships() {
 
 function store_ship(num) {
     if(is_player_one) {
-        player_ships_placed.player1 = 
+        player_ships_placed.player1 =
             player_ships_placed.player1.slice(0,num) +
             num_of_ships +
             player_ships_placed.player1.slice(num+1,89)
-        console.log(player_ships_placed.player1);
+        console.log("p1: "+ player_ships_placed.player1);
     }
     else {
-        player_ships_placed.player2 = 
+        player_ships_placed.player2 =
             player_ships_placed.player2.slice(0,num) +
             num_of_ships +
             player_ships_placed.player2.slice(num+1,89)
-        console.log(player_ships_placed.player2);
+        console.log("p2: "+ player_ships_placed.player2);
     }
 }
 
@@ -190,4 +184,15 @@ function reset_bools() {
     is_vertical = true;
     is_horizontal = true;
     boat_first_click = true;
+}
+
+function print_boat_sel_inst() {
+    context.fillText("Please select where you want the",655,75);
+    context.fillText("first ship of size=" +num_of_ships + " block",685,100);
+    if(is_player_one) {
+        context.fillText("<-------------------------------------------",665,125);
+    }
+    else {
+        context.fillText("-------------------------------------------->",665,125);
+    }
 }
