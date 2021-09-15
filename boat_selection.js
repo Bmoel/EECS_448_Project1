@@ -46,6 +46,7 @@ function boat_sel_click() {
             context.fillText("Ready to pass",600,150);
             context.fillText("to player 2?",600,175);
             ask_more_ships();
+            fillSquaresPlayer1()
         }
     
     }
@@ -120,8 +121,12 @@ function ask_more_ships() {
         more_ships = false;
         if(is_player_one) {
             is_player_one = false;
+            fillSquaresPlayer1();
         } else {
-            is_player_one = true;
+            in_boat_selcection = false;
+            combat_phase = true;
+            fillSquaresPlayer2();
+            start_combat();
         }
         num_of_ships = 1;
         draw();
@@ -134,6 +139,7 @@ function store_ship(num) {
             player_ships_placed.player1.slice(0,num) +
             num_of_ships +
             player_ships_placed.player1.slice(num+1,89)
+        checkHit(num, is_player_one)
         console.log(player_ships_placed.player1);
     }
     else {
@@ -141,6 +147,7 @@ function store_ship(num) {
             player_ships_placed.player2.slice(0,num) +
             num_of_ships +
             player_ships_placed.player2.slice(num+1,89)
+        checkHit(num, is_player_one)
         console.log(player_ships_placed.player2);
     }
 }
