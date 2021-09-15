@@ -28,8 +28,8 @@ html, body {
     width: 610px;
     height: 550px;
     margin-left: 1000px;
-    margin-bottom: 0px;
-    z-index: 2;
+    margin-top: -550px;
+    z-index: 1;
 }
 
 yes_button {

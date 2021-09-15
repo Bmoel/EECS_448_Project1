@@ -3,6 +3,8 @@ let num_of_ships = 1;
 let ship_inc = 1;
 let more_ships = false;
 let boat_first_click = true;
+let is_vertical = true;
+let is_horizontal = true;
 var yes_button;
 var body;
 var no_button;
@@ -34,43 +36,55 @@ function boat_sel_click() {
             context.fillText("Please selects blocks to create",180,600);
             context.fillText("a 1x"+num_of_ships+" ship",260,625);
         }
-        ask_more_ships();
+        
+        if(num_of_ships < 6 && ship_inc == num_of_ships+1) {
+            context.fillText("Would you like to add ",600,150);
+            context.fillText("another ship?",600,175);
+            ask_more_ships();
+        }
+        else if (ship_inc == num_of_ships+1){
+            context.fillText("Ready to pass",600,150);
+            context.fillText("to player 2?",600,175);
+            ask_more_ships();
+        }
+    
     }
 }
 
 //Helps give instructions for where and how many blocks long ships are
 function place_ships() {
     if(num_of_ships == 1) {
+        reset_bools();
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=1 block",600,100);
     }
     else if(num_of_ships == 2 && more_ships == true) {
-        boat_first_click = true;
+        reset_bools();
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=2 block",600,100);
     }
     else if(num_of_ships == 3 && more_ships == true) {
-        boat_first_click = true;
+        reset_bools();
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=3 block",600,100);
     }
     else if(num_of_ships == 4 && more_ships == true) {
-        boat_first_click = true;
+        reset_bools();
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=4 block",600,100);
     }
     else if(num_of_ships == 5 && more_ships == true) {
-        boat_first_click = true;
+        reset_bools();
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=5 block",600,100);
     }
     else if(num_of_ships == 6 && more_ships == true){
-        boat_first_click = true;
+        reset_bools();
         ship_inc = 1;
         context.fillText("Please select where you want the",600,75);
         context.fillText("first ship of size=6 block",600,100);
@@ -87,14 +101,6 @@ function ask_more_ships() {
     no_button = document.createElement("no_button");
     no_button.innerHTML = "No";
     body.appendChild(no_button);
-    if(num_of_ships < 6 && ship_inc == num_of_ships+1) {
-        context.fillText("Would you like to add ",600,150);
-        context.fillText("another ship?",600,175);
-    }
-    else if (ship_inc == num_of_ships+1){
-        context.fillText("Ready to pass",600,150);
-        context.fillText("to player 2?",600,175);
-    }
 
     yes_button.addEventListener("click", () => {
         body.removeChild(yes_button);
@@ -142,16 +148,20 @@ function store_ship(num) {
 function boat_check_valid_move(num) {
     if(is_player_one) {
         for(i = 1; i < num_of_ships; i++) {
-            if(player_ships_placed.player1.charAt(num-i) == num_of_ships) {
+            if(player_ships_placed.player1.charAt(num-i) == num_of_ships && is_horizontal) {
+                is_vertical = false;
                 return true
             }
-            else if (player_ships_placed.player1.charAt(num+i) == num_of_ships) {
+            else if (player_ships_placed.player1.charAt(num+i) == num_of_ships && is_horizontal) {
+                is_vertical = false;
                 return true;
             }
-            else if (player_ships_placed.player1.charAt(num-(i*10)) == num_of_ships) {
+            else if (player_ships_placed.player1.charAt(num-(i*10)) == num_of_ships && is_vertical) {
+                is_horizontal = false;
                 return true;
             }
-            else if (player_ships_placed.player1.charAt(num+(i*10)) == num_of_ships) {
+            else if (player_ships_placed.player1.charAt(num+(i*10)) == num_of_ships && is_vertical) {
+                is_horizontal = false;
                 return true;
             }
             return false;
@@ -174,4 +184,10 @@ function boat_check_valid_move(num) {
             return false;
         }
     }
+}
+
+function reset_bools() {
+    is_vertical = true;
+    is_horizontal = true;
+    boat_first_click = true;
 }
