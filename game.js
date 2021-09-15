@@ -6,10 +6,10 @@ let is_player_one = true; //bool to track current player
 document.addEventListener('DOMContentLoaded', () => {
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
-    const square = document.querySelectorAll('.square')
+    let square = document.querySelectorAll('.square')
+    let grid = document.querySelector('.grid')
 
     square.forEach(id => {
-        id.addEventListener('click', checkHit)
         id.addEventListener('click', boat_sel_click)
     })
     draw();
@@ -23,28 +23,45 @@ const player1array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
                         40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,
                         60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89]
 
-//player array for player 1 updated at each click event when turn%2 == 0
+//player array for player 2 updated at each click event when turn%2 == 0
 const player2array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
                         20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,
                         40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,
                         60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89]
 
 //updates player array when a click event happens NOTE: will eventually be used to print to the screen where hits/misses/empty spaces are
-function checkHit () {
-    console.log(this)
-    if (in_combat) {
+function checkHit (squareToCheck, isPlayerOne) {
+    //if (in_combat) {
         turn++;
-        if(turn % 2 == 0){
+        if(isPlayerOne){
             console.log("player 1 turn\n")
-            player1array[this.id] = 'hit'
+            player1array[squareToCheck] = 'ship'
             console.log(player1array)
         }
         else{
             console.log("player 2 turn\n")
-            player2array[this.id] = 'hit'
+            player2array[squareToCheck - 90] = 'ship'
             console.log(player2array)
         }
-    } 
+    //} 
+}
+
+function fillSquaresPlayer1 () {
+    for (let i = 0; i < 90; i++){
+        var image = document.createElement('img')
+        image.src = 'images/team10.png'
+        document.getElementById(i).innerHTML = ''
+        document.getElementById(i).appendChild(image)
+    }
+}
+
+function fillSquaresPlayer2 () {
+    for (let i = 90; i < 180; i++){
+        var image = document.createElement('img')
+        image.src = 'images/team10.png'
+        document.getElementById(i).innerHTML = ''
+        document.getElementById(i).appendChild(image)
+    }
 }
 
 //Draws that current animation frame in according to what it tells to print
