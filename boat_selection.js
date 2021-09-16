@@ -81,7 +81,13 @@ function boat_sel_click() {
             context.fillText("Ready to pass", 600, 150);
             context.fillText("to player 2?", 600, 175);
             ask_more_ships();
-            fillSquaresPlayer1()
+            if(is_player_one){
+                fillSquaresPlayer1()
+            }
+            else{
+                fillSquaresPlayer2()
+                start_combat()
+            }
         }
 
     }
