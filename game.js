@@ -31,7 +31,6 @@ const player2array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
 
 //updates player array when a click event happens NOTE: will eventually be used to print to the screen where hits/misses/empty spaces are
 function checkHit (squareToCheck, isPlayerOne) {
-    //if (in_combat) {
         turn++;
         if(isPlayerOne){
             console.log("player 1 turn\n")
@@ -43,7 +42,6 @@ function checkHit (squareToCheck, isPlayerOne) {
             player2array[squareToCheck - 90] = 'ship'
             console.log(player2array)
         }
-    //} 
 }
 
 function fillSquaresPlayer1 () {

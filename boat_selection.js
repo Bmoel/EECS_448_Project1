@@ -121,6 +121,8 @@ function ask_more_ships() {
             in_boat_selcection = false;
             combat_phase = true;
             fillSquaresPlayer2();
+            console.log(player1array)
+            console.log(player2array)
             start_combat();
         }
         num_of_ships = 1;
