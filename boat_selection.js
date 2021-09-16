@@ -230,10 +230,20 @@ function boat_check_valid_move(num) {
 }
 
 function first_turn_already_a_ship_there(num) {
-    if (player_ships_placed.player1.charAt(num) != "." || player_ships_placed.player2.charAt(num) != ".")
-        return true;
-    else
-        return false;
+    if (is_player_one) {
+        if (player_ships_placed.player1.charAt(num) != ".")
+            return true;
+        else
+            return false;
+    }
+    else {
+        num = num - 90;
+        if (player_ships_placed.player2.charAt(num) != ".")
+            return true;
+        else
+            return false;
+    }
+    
 }
 
 function reset_bools() {
