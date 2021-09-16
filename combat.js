@@ -243,7 +243,7 @@ function showPlayer1ships() {
     combat_turn++
 
     player_two_turn_button = document.createElement("player_two_turn_button");
-    player_two_turn_button.innerHTML = "player two turn";
+    player_two_turn_button.innerHTML = "Player Two's Turn";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(player_two_turn_button);
 

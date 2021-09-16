@@ -57,3 +57,42 @@ no_button {
     background: rgb(241, 14, 14);
     border: none;
 }
+
+player_one_turn_button {
+    position: absolute;
+    top: 210px;
+    left: 755px;
+    width: 5%;
+    height: 9%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    background: rgb(241, 97, 14);
+    border: none;
+}
+
+leave_buffer_button {
+    position: absolute;
+    top: 210px;
+    left: 755px;
+    width: 5%;
+    height: 6%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    background: rgb(241, 97, 14);
+    border: none;
+}
+
+player_two_turn_button {
+    position: absolute;
+    top: 210px;
+    left: 755px;
+    width: 5%;
+    height: 9%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    background: rgb(241, 97, 14);
+    border: none;
+}
