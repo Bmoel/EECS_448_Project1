@@ -103,10 +103,10 @@ function print_board() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
     context.font = "Bold 12pt Candara";
     if(is_player_one) {
-        context.fillText("Player 1",750,50);
+        context.fillText("Player 1",760,50);
     }
     else {
-        context.fillText("Player 2",750,50);
+        context.fillText("Player 2",760,50);
     }
     context.font = "15pt Candara";
     for(let i = 1; i <= 9; i++) {
