@@ -85,7 +85,6 @@ function boat_sel_click() {
             }
             else{
                 fillSquaresPlayer2()
-                start_combat()
             }
         }
         else if (!is_player_one) {
@@ -160,6 +159,7 @@ function ask_more_ships() {
             combat_phase = true;
             fillSquaresPlayer2();
             start_combat();
+            console.log("should start combat phase")
         }
         draw();
     })
