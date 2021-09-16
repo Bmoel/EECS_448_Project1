@@ -158,9 +158,6 @@ function checkFlip () {
                 console.log("here7")
             }
         }
-        check_game_over_player_1()
-        check_game_over_player_2()
-        checkSunk()
     }
     else if (in_buffer){
         console.log("in buffer can't click")
