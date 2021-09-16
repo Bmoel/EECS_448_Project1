@@ -18,7 +18,7 @@ let player_ships_placed = {
 function boat_sel_click() {
     console.log(this);
     if (in_boat_selcection) {
-        if (boat_first_click && !first_turn_already_a_ship_there(parseInt(this.id))) {
+        if (boat_first_click) {
             store_ship(parseInt(this.id));
             var shipImage = document.createElement('img');
             if (num_of_ships == 1)
@@ -38,7 +38,7 @@ function boat_sel_click() {
             ship_inc++;
             boat_first_click = false;
         }
-        else if (ship_inc <= num_of_ships && boat_check_valid_move(parseInt(this.id))) {
+        else if (ship_inc <= num_of_ships) {
             store_ship(parseInt(this.id));
             var shipImage = document.createElement('img')
             if (num_of_ships == 1)
@@ -188,7 +188,7 @@ function store_ship(num) {
         player_ships_placed.player1 =
             player_ships_placed.player1.slice(0, num) +
             num_of_ships +
-            player_ships_placed.player1.slice(num, 89)
+            player_ships_placed.player1.slice(num+1, 90)
         checkHit(num, is_player_one)
         console.log(player_ships_placed.player1);
     }
@@ -196,7 +196,7 @@ function store_ship(num) {
         player_ships_placed.player2 =
             player_ships_placed.player2.slice(0, num - 90) +
             num_of_ships +
-            player_ships_placed.player2.slice((num - 90), 89)
+            player_ships_placed.player2.slice((num - 90)+1, 90)
         checkHit(num, is_player_one)
         console.log(player_ships_placed.player2);
     }
@@ -205,7 +205,10 @@ function store_ship(num) {
 function boat_check_valid_move(num) {
     if (is_player_one) {
         for (i = 1; i < num_of_ships; i++) {
-            if (player_ships_placed.player1.charAt(num - i) == num_of_ships && is_horizontal) {
+            if (player_ships_placed.player1.charAt(num) != ".") { //<-- checks to ensure there isn't already a ship placed there
+                return false;
+            }
+            else if (player_ships_placed.player1.charAt(num - i) == num_of_ships && is_horizontal) {
                 is_vertical = false;
                 return true
             }
@@ -221,13 +224,16 @@ function boat_check_valid_move(num) {
                 is_horizontal = false;
                 return true;
             }
+            return false;
         }
-        return false;
     }
     else {
         num = num - 90;
         for (i = 1; i < num_of_ships; i++) {
-            if (player_ships_placed.player2.charAt(num - i) == num_of_ships && is_horizontal) {
+            if (player_ships_placed.player2.charAt(num) != ".") { //<-- checks to ensure there isn't already a ship placed there
+                return false;
+            }
+            else if (player_ships_placed.player2.charAt(num - i) == num_of_ships && is_horizontal) {
                 return true
             }
             else if (player_ships_placed.player2.charAt(num + i) == num_of_ships && is_horizontal) {
@@ -238,9 +244,6 @@ function boat_check_valid_move(num) {
             }
             else if (player_ships_placed.player2.charAt(num + (i * 10)) == num_of_ships && is_vertical) {
                 return true;
-            }
-            if (player_ships_placed.player2.charAt(num) != ".") { //<-- checks to ensure there isn't already a ship placed there
-                return false;
             }
             return false;
         }
