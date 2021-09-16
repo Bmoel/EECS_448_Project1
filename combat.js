@@ -116,6 +116,7 @@ function showPlayer1ships() {
 } 
 
 function showPlayer2board() {
+    console.log("player 2 board")
     for (let i = 0; i<90; i++) {
         if(player1array[i] == 'hit'){
             var image = document.createElement('img')
@@ -141,19 +142,19 @@ function showPlayer2board() {
 function showPlayer2Ships() {
     console.log("in player 2 ships")
     for (let i = 90; i<180; i++) {
-        if(player1array[i-90] == 'hit'){
+        if(player2array[i-90] == 'hit'){
             var image = document.createElement('img')
             image.src = 'images/fire.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
         }
-        else if (player1array[i-90] == 'miss') {
+        else if (player2array[i-90] == 'miss') {
             var image = document.createElement('img')
             image.src = 'images/water.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
         }
-        else if (player1array[i-90] == 'ship'){
+        else if (player2array[i-90] == 'ship'){
             var image = document.createElement('img')
             image.src = 'images/ship.png'
             document.getElementById(i).innerHTML = ''
