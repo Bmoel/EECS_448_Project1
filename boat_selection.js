@@ -1,20 +1,22 @@
-let in_boat_selcection = true;
-let num_of_ships = 1;
-let ship_inc = 1;
-let max_ships;
-let more_ships = false;
-let boat_first_click = true;
-let is_vertical = true;
-let is_horizontal = true;
-var yes_button;
-var body;
-var no_button;
+let in_boat_selcection = true; //if in the boat selection phase
+let num_of_ships = 1; //holds the number of ships
+let ship_inc = 1; //increment that counts up to compare with the number of ships
+let max_ships; //maximum amount of ships that player2 can place
+let more_ships = false; //Bool to track whether more ships need to be placed
+let boat_first_click = true; //If the new boat is the first block being placed
+let is_vertical = true; //If the boat is in a vertical orientation
+let is_horizontal = true; //If the boat is in a horizontal orientaion
+var yes_button; //varibale to hold the yes_button
+var body; //body declaration to help with the placement of buttons
+var no_button; //variable to hold the no_button
 
+//Strings that will hold where the boats are
 let player_ships_placed = {
     player1: "..........................................................................................",
     player2: "..........................................................................................",
 }
 
+//Click function that runs when there is a click on the boards
 function boat_sel_click() {
     console.log(this);
     if (in_boat_selcection) {
@@ -58,27 +60,27 @@ function boat_sel_click() {
             ship_inc++;
         }
         else if (ship_inc > num_of_ships) {
-            context.fillText("Max number of blocks placed", 180, 575);
-            context.fillText("Plese select yes or no", 210, 600);
+            context.fillText("Max number of blocks placed", 675, 475);
+            context.fillText("Plese select yes or no", 710, 500);
         }
         else if (boat_check_valid_move(parseInt(this.id)) == false) {
             if (first_turn_already_a_ship_there(parseInt(this.id))) {
                 context.fillText("Already a ship there!", 180, 600);
             }
             else {
-                context.fillText("Please selects blocks to create", 180, 600);
-                context.fillText("a 1x" + num_of_ships + " ship", 260, 625);
+                context.fillText("Please selects blocks to create", 675, 600);
+                context.fillText("a 1x" + num_of_ships + " ship", 755, 625);
             }
         }
 
         if (num_of_ships < 6 && ship_inc == num_of_ships + 1 && is_player_one) {
-            context.fillText("Would you like to add ", 695, 150);
-            context.fillText("another ship?", 725, 175);
+            context.fillText("Would you like to add ", 708, 150);
+            context.fillText("another ship?", 740, 175);
             ask_more_ships();
         }
         else if (ship_inc == num_of_ships + 1 && is_player_one) {
-            context.fillText("Ready to pass", 600, 150);
-            context.fillText("to player 2?", 600, 175);
+            context.fillText("Ready to pass", 735, 150);
+            context.fillText("to player 2?", 740, 175);
             ask_more_ships();
             if(is_player_one){
                 fillSquaresPlayer1()
@@ -87,11 +89,9 @@ function boat_sel_click() {
                 fillSquaresPlayer2()
             }
         }
-        else if (!is_player_one) {
+        else if (!is_player_one && ship_inc == num_of_ships+1) {
             context.fillText("Are you done adding boat "+ num_of_ships + "?",675,150);
-            if (ship_inc == num_of_ships+1) {
-                ask_more_ships();
-            }
+            ask_more_ships();
         }
     }
 }
@@ -130,7 +130,7 @@ function place_ships() {
     }
 }
 
-//function that helps make the yes and no buttons, along with what to do when clicking yes and no
+//Function that helps make the yes and no buttons, along with what to do when clicking yes and no
 function ask_more_ships() {
     yes_button = document.createElement("yes_button");
     yes_button.innerHTML = "Yes";
@@ -183,6 +183,8 @@ function ask_more_ships() {
     })
 }
 
+//Function that stores the ships in the player strings, as well as calls checkHit
+//in order to store data in a separate array (checkHit() is in game.js)
 function store_ship(num) {
     if (is_player_one) {
         player_ships_placed.player1 =
@@ -202,6 +204,7 @@ function store_ship(num) {
     }
 }
 
+//Checks if the block being placed is a valid move for the current boat
 function boat_check_valid_move(num) {
     if (is_player_one) {
         for (i = 1; i < num_of_ships; i++) {
@@ -250,6 +253,7 @@ function boat_check_valid_move(num) {
     }
 }
 
+
 function first_turn_already_a_ship_there(num) {
     if (is_player_one) {
         if (player_ships_placed.player1.charAt(num) != ".")
@@ -267,15 +271,17 @@ function first_turn_already_a_ship_there(num) {
     
 }
 
+//helper function to reset the bools when swapping to another ship
 function reset_bools() {
     is_vertical = true;
     is_horizontal = true;
     boat_first_click = true;
 }
 
+//helper function to help print out instructions to the board
 function print_boat_sel_inst() {
-    context.fillText("Please select where you want the", 655, 75);
-    context.fillText("first ship of size=" + num_of_ships + " block", 685, 100);
+    context.fillText("Please select the blocks where you want", 635, 75);
+    context.fillText("the first ship of size=" + num_of_ships + " block", 680, 100);
     if (is_player_one) {
         context.fillText("<------------------------------------------------", 655, 125);
     }
