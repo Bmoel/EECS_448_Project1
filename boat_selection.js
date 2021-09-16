@@ -17,35 +17,64 @@ let player_ships_placed = {
 //NOT COMPLETE: For now helps put numbers in the squares, but needs to be optimized
 function boat_sel_click() {
     console.log(this);
-    if(in_boat_selcection) {
-        if(boat_first_click) {
+    if (in_boat_selcection) {
+        if (boat_first_click) {
             store_ship(parseInt(this.id));
-            this.innerHTML = num_of_ships; //not final, just using this now to print out numbers
+            var shipImage = document.createElement('img');
+            if (num_of_ships == 1)
+                shipImage.src = 'images/ship1.png';
+            else if (num_of_ships == 2)
+                shipImage.src = 'images/ship2.png';
+            else if (num_of_ships == 3)
+                shipImage.src = 'images/ship3.png';
+            else if (num_of_ships == 4)
+                shipImage.src = 'images/ship4.png';
+            else if (num_of_ships == 5)
+                shipImage.src = 'images/ship5.png';
+            else if (num_of_ships == 6)
+                shipImage.src = 'images/ship6.png';
+
+            document.getElementById(this.id).innerHTML = ''
+            document.getElementById(this.id).appendChild(shipImage)
             ship_inc++;
             boat_first_click = false;
         }
-        else if(ship_inc <= num_of_ships && boat_check_valid_move(parseInt(this.id))) {
+        else if (ship_inc <= num_of_ships && boat_check_valid_move(parseInt(this.id))) {
             store_ship(parseInt(this.id));
-            this.innerHTML = num_of_ships; //not final, just using this now to print out numbers
+            var shipImage = document.createElement('img')
+            if (num_of_ships == 1)
+                shipImage.src = 'images/ship1.png';
+            else if (num_of_ships == 2)
+                shipImage.src = 'images/ship2.png';
+            else if (num_of_ships == 3)
+                shipImage.src = 'images/ship3.png';
+            else if (num_of_ships == 4)
+                shipImage.src = 'images/ship4.png';
+            else if (num_of_ships == 5)
+                shipImage.src = 'images/ship5.png';
+            else if (num_of_ships == 6)
+                shipImage.src = 'images/ship6.png';
+            document.getElementById(this.id).innerHTML = ''
+            document.getElementById(this.id).appendChild(shipImage) 
             ship_inc++;
         }
-        else if(ship_inc > num_of_ships) {
-            context.fillText("Max number of blocks placed",180,575);
-            context.fillText("Plese select yes or no",210,600);
+        else if (ship_inc > num_of_ships) {
+            context.fillText("Max number of blocks placed", 180, 575);
+            context.fillText("Plese select yes or no", 210, 600);
         }
         else if (boat_check_valid_move(parseInt(this.id)) == false) {
-            context.fillText("Please selects blocks to create",180,600);
-            context.fillText("a 1x"+num_of_ships+" ship",260,625);
+            context.fillText("Please selects blocks to create", 180, 600);
+            context.fillText("a 1x" + num_of_ships + " ship", 260, 625);
         }
 
-        if(num_of_ships < 6 && ship_inc == num_of_ships+1) {
-            context.fillText("Would you like to add ",695,150);
-            context.fillText("another ship?",725,175);
+        if (num_of_ships < 6 && ship_inc == num_of_ships + 1) {
+            context.fillText("Would you like to add ", 695, 150);
+            context.fillText("another ship?", 725, 175);
             ask_more_ships();
         }
-        else if (ship_inc == num_of_ships+1){
-            context.fillText("Ready to pass",600,150);
-            context.fillText("to player 2?",600,175);
+        else if (ship_inc == num_of_ships + 1) {
+            context.fillText("Ready to pass", 600, 150);
+            context.fillText("to player 2?", 600, 175);
             ask_more_ships();
             fillSquaresPlayer1()
         }
@@ -55,32 +84,32 @@ function boat_sel_click() {
 
 //Helps give instructions for where and how many blocks long ships are
 function place_ships() {
-    if(num_of_ships == 1) {
+    if (num_of_ships == 1) {
         reset_bools();
         ship_inc = 1;
         print_boat_sel_inst()
     }
-    else if(num_of_ships == 2 && more_ships == true) {
+    else if (num_of_ships == 2 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
         print_boat_sel_inst()
     }
-    else if(num_of_ships == 3 && more_ships == true) {
+    else if (num_of_ships == 3 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
         print_boat_sel_inst()
     }
-    else if(num_of_ships == 4 && more_ships == true) {
+    else if (num_of_ships == 4 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
         print_boat_sel_inst()
     }
-    else if(num_of_ships == 5 && more_ships == true) {
+    else if (num_of_ships == 5 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
         print_boat_sel_inst()
     }
-    else if(num_of_ships == 6 && more_ships == true){
+    else if (num_of_ships == 6 && more_ships == true) {
         reset_bools();
         ship_inc = 1;
         print_boat_sel_inst()
@@ -103,7 +132,7 @@ function ask_more_ships() {
         body.removeChild(no_button);
         num_of_ships++;
         more_ships = true;
-        if(num_of_ships == 7) {
+        if (num_of_ships == 7) {
             is_player_one = false;
             num_of_ships = 1;
         }
@@ -114,7 +143,7 @@ function ask_more_ships() {
         body.removeChild(yes_button);
         body.removeChild(no_button);
         more_ships = false;
-        if(is_player_one) {
+        if (is_player_one) {
             is_player_one = false;
             fillSquaresPlayer1();
         } else {
@@ -129,40 +158,40 @@ function ask_more_ships() {
 }
 
 function store_ship(num) {
-    if(is_player_one) {
+    if (is_player_one) {
         player_ships_placed.player1 =
-            player_ships_placed.player1.slice(0,num) +
+            player_ships_placed.player1.slice(0, num) +
             num_of_ships +
-            player_ships_placed.player1.slice(num+1,89)
+            player_ships_placed.player1.slice(num + 1, 89)
         checkHit(num, is_player_one)
         console.log(player_ships_placed.player1);
     }
     else {
         player_ships_placed.player2 =
-            player_ships_placed.player2.slice(0,num-90) +
+            player_ships_placed.player2.slice(0, num - 90) +
             num_of_ships +
-            player_ships_placed.player2.slice((num-90)+1,89)
+            player_ships_placed.player2.slice((num - 90) + 1, 89)
         checkHit(num, is_player_one)
         console.log(player_ships_placed.player2);
     }
 }
 
 function boat_check_valid_move(num) {
-    if(is_player_one) {
-        for(i = 1; i < num_of_ships; i++) {
-            if(player_ships_placed.player1.charAt(num-i) == num_of_ships && is_horizontal) {
+    if (is_player_one) {
+        for (i = 1; i < num_of_ships; i++) {
+            if (player_ships_placed.player1.charAt(num - i) == num_of_ships && is_horizontal) {
                 is_vertical = false;
                 return true
             }
-            else if (player_ships_placed.player1.charAt(num+i) == num_of_ships && is_horizontal) {
+            else if (player_ships_placed.player1.charAt(num + i) == num_of_ships && is_horizontal) {
                 is_vertical = false;
                 return true;
             }
-            else if (player_ships_placed.player1.charAt(num-(i*10)) == num_of_ships && is_vertical) {
+            else if (player_ships_placed.player1.charAt(num - (i * 10)) == num_of_ships && is_vertical) {
                 is_horizontal = false;
                 return true;
             }
-            else if (player_ships_placed.player1.charAt(num+(i*10)) == num_of_ships && is_vertical) {
+            else if (player_ships_placed.player1.charAt(num + (i * 10)) == num_of_ships && is_vertical) {
                 is_horizontal = false;
                 return true;
             }
@@ -170,18 +199,18 @@ function boat_check_valid_move(num) {
         }
     }
     else {
-        num = num-90;
-        for(i = 1; i < num_of_ships; i++) {
-            if(player_ships_placed.player2.charAt(num-i) == num_of_ships && is_horizontal) {
+        num = num - 90;
+        for (i = 1; i < num_of_ships; i++) {
+            if (player_ships_placed.player2.charAt(num - i) == num_of_ships && is_horizontal) {
                 return true
             }
-            else if (player_ships_placed.player2.charAt(num+i) == num_of_ships && is_horizontal) {
+            else if (player_ships_placed.player2.charAt(num + i) == num_of_ships && is_horizontal) {
                 return true;
             }
-            else if (player_ships_placed.player2.charAt(num-(i*10)) == num_of_ships && is_vertical) {
+            else if (player_ships_placed.player2.charAt(num - (i * 10)) == num_of_ships && is_vertical) {
                 return true;
             }
-            else if (player_ships_placed.player2.charAt(num+(i*10)) == num_of_ships && is_vertical) {
+            else if (player_ships_placed.player2.charAt(num + (i * 10)) == num_of_ships && is_vertical) {
                 return true;
             }
             return false;
@@ -196,12 +225,12 @@ function reset_bools() {
 }
 
 function print_boat_sel_inst() {
-    context.fillText("Please select where you want the",655,75);
-    context.fillText("first ship of size=" +num_of_ships + " block",685,100);
-    if(is_player_one) {
-        context.fillText("<-------------------------------------------",665,125);
+    context.fillText("Please select where you want the", 655, 75);
+    context.fillText("first ship of size=" + num_of_ships + " block", 685, 100);
+    if (is_player_one) {
+        context.fillText("<-------------------------------------------", 665, 125);
     }
     else {
-        context.fillText("-------------------------------------------->",665,125);
+        context.fillText("-------------------------------------------->", 665, 125);
     }
 }
