@@ -18,7 +18,7 @@ let player_ships_placed = {
 function boat_sel_click() {
     console.log(this);
     if (in_boat_selcection) {
-        if (boat_first_click) {
+        if (boat_first_click  && !first_turn_already_a_ship_there(parseInt(this.id))) {
             store_ship(parseInt(this.id));
             var shipImage = document.createElement('img');
             if (num_of_ships == 1)
@@ -38,7 +38,7 @@ function boat_sel_click() {
             ship_inc++;
             boat_first_click = false;
         }
-        else if (ship_inc <= num_of_ships) {
+        else if (ship_inc <= num_of_ships  && boat_check_valid_move(parseInt(this.id))) {
             store_ship(parseInt(this.id));
             var shipImage = document.createElement('img')
             if (num_of_ships == 1)
