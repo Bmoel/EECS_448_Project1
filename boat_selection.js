@@ -20,7 +20,7 @@ let player_ships_placed = {
 function boat_sel_click() {
     console.log(this);
     if (in_boat_selcection) {
-        if (boat_first_click  && !first_turn_already_a_ship_there(parseInt(this.id))) {
+        if (boat_first_click  && !first_turn_already_a_ship_there(parseInt(this.id)) && valid_first_block(parseInt(this.id))) {
             store_ship(parseInt(this.id));
             var shipImage = document.createElement('img');
             if (num_of_ships == 1)
@@ -253,6 +253,57 @@ function boat_check_valid_move(num) {
     }
 }
 
+function valid_first_block(num) {
+    let space_up = 0, space_down = 0, space_left = 0, space_right = 0
+    if (is_player_one) {
+        if (player_ships_placed.player1.charAt(num) != ".") { //<-- checks to ensure there isn't already a ship placed there
+            return false;
+        }
+        for (i = 1; i < 10; i++) {
+            if (player_ships_placed.player1.charAt(num - i) == "." && (num % 10) - i >= 0 && i - 1 == space_left) {
+                space_left++
+            }
+            if (player_ships_placed.player1.charAt(num + i) == "." && (num % 10) + i < 10 && i - 1 == space_right) {
+                space_right++
+            }
+            if (player_ships_placed.player1.charAt(num - (i * 10)) == "." && i - 1 == space_up) {
+                space_up++
+            }
+            if (player_ships_placed.player1.charAt(num + (i * 10)) == "." && i - 1 == space_down) {
+                space_down++
+            }
+        }
+    }
+    else {
+        num = num - 90;
+        if (player_ships_placed.player2.charAt(num) != ".") { //<-- checks to ensure there isn't already a ship placed there
+            return false;
+        }
+        for (i = 1; i < 10; i++) {
+            if (player_ships_placed.player2.charAt(num - i) == "." && (num % 10) - i >= 0 && i - 1 == space_left) {
+                space_left++
+            }
+            if (player_ships_placed.player2.charAt(num + i) == "." && (num % 10) + i < 10 && i - 1 == space_right) {
+                space_right++
+            }
+            if (player_ships_placed.player2.charAt(num - (i * 10)) == "." && i - 1 == space_up) {
+                space_up++
+            }
+            if (player_ships_placed.player2.charAt(num + (i * 10)) == "." && i - 1 == space_down) {
+                space_down++
+            }
+        }
+    }
+    if(num_of_ships - 1 <= space_down + space_up || num_of_ships - 1 <= space_left + space_right) {
+        if(num_of_ships - 1 <= space_down + space_up == false) {
+            is_vertical = false
+        }
+        if(num_of_ships - 1 <= space_left + space_right == false) {
+            is_horizontal = false
+        }
+        return true
+    }
+}
 
 function first_turn_already_a_ship_there(num) {
     if (is_player_one) {
