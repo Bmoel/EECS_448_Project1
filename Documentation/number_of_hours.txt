@@ -13,3 +13,7 @@ We each got to the estimate by taking how many hours previous hours have taken, 
 So for example if we thought that each person would need to spend eight hours on the project, 8*5 would be 40 hours
 Overall since this is our first project, we are ultimately just making an educated guess
 Future projects will likely have more accurate estimates
+
+Hours tracking
+Alec
+    9/16 5:30 - 7:40
