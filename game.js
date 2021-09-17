@@ -84,21 +84,9 @@ function draw() {
 
         }
     }
-    if(check_game_over() == false) { //recalls draw function if check_game_over returns false (does this through tick() function)
-        tick();
-    }
 }
 
-//Requests the current animation frame
-function tick() {
-    window.requestAnimationFrame(draw);
-}
-
-//Function to check if game is over
-function check_game_over() {
-
-}
-
+//Function to help print letters and numbers the the board
 function print_board() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
     context.font = "Bold 12pt Candara";

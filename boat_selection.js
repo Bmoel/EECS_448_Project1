@@ -6,6 +6,8 @@ let more_ships = false; //Bool to track whether more ships need to be placed
 let boat_first_click = true; //If the new boat is the first block being placed
 let is_vertical = true; //If the boat is in a vertical orientation
 let is_horizontal = true; //If the boat is in a horizontal orientaion
+let boat6 = false;
+let first_button = true;
 var yes_button; //varibale to hold the yes_button
 var body; //body declaration to help with the placement of buttons
 var no_button; //variable to hold the no_button
@@ -65,7 +67,7 @@ function boat_sel_click() {
         }
         else if (boat_check_valid_move(parseInt(this.id)) == false) {
             if (first_turn_already_a_ship_there(parseInt(this.id))) {
-                context.fillText("Already a ship there!", 180, 600);
+                context.fillText("Already a ship there!", 709, 550);
             }
             else {
                 context.fillText("Please selects blocks to create", 675, 600);
@@ -73,15 +75,26 @@ function boat_sel_click() {
             }
         }
 
-        if (num_of_ships < 6 && ship_inc == num_of_ships + 1 && is_player_one) {
-            context.fillText("Would you like to add ", 708, 150);
-            context.fillText("another ship?", 740, 175);
-            ask_more_ships();
+        if (!is_player_one && num_of_ships == 7) {
+            in_boat_selcection = false;
+            in_combat = true;
+            fillSquaresPlayer2();
+            start_combat();
+        }
+        else if (num_of_ships < 6 && ship_inc == num_of_ships + 1 && is_player_one) {
+            if(first_button) {
+                context.fillText("Would you like to add ", 708, 150);
+                context.fillText("another ship?", 740, 175);
+                ask_more_ships();
+            }
         }
         else if (ship_inc == num_of_ships + 1 && is_player_one) {
-            context.fillText("Ready to pass", 735, 150);
-            context.fillText("to player 2?", 740, 175);
-            ask_more_ships();
+            boat6 = true;
+            if(first_button) {
+                context.fillText("Ready to pass", 735, 150);
+                context.fillText("to player 2?", 740, 175);
+                ask_more_ships();
+            }
             if(is_player_one){
                 fillSquaresPlayer1()
             }
@@ -90,8 +103,10 @@ function boat_sel_click() {
             }
         }
         else if (!is_player_one && ship_inc == num_of_ships+1) {
-            context.fillText("Are you done adding boat "+ num_of_ships + "?",675,150);
-            ask_more_ships();
+            if(first_button) {
+                context.fillText("Are you done adding boat "+ num_of_ships + "?",675,150);
+                ask_more_ships();
+            }
         }
     }
 }
@@ -132,16 +147,17 @@ function place_ships() {
 
 //Function that helps make the yes and no buttons, along with what to do when clicking yes and no
 function ask_more_ships() {
+    first_button = false;
     yes_button = document.createElement("yes_button");
     yes_button.innerHTML = "Yes";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(yes_button);
-
     if(is_player_one) {
         no_button = document.createElement("no_button");
         no_button.innerHTML = "No";
         body.appendChild(no_button);
     }
+    
     yes_button.addEventListener("click", () => {
         body.removeChild(yes_button);
         if (is_player_one) {
@@ -156,30 +172,38 @@ function ask_more_ships() {
         }
         else if (!is_player_one && num_of_ships == max_ships+1) {
             in_boat_selcection = false;
-            combat_phase = true;
+            in_combat = true;
             fillSquaresPlayer2();
             start_combat();
             console.log("should start combat phase")
+        }
+        else if(!is_player_one && ship_inc == 7) {
+            in_boat_selcection = false;
+            in_combat = true;
+            fillSquaresPlayer2();
+            start_combat();
         }
         draw();
     })
     
     no_button.addEventListener("click", () => {
-        body.removeChild(yes_button);
-        body.removeChild(no_button);
-        more_ships = false;
-        if (is_player_one) {
-            is_player_one = false;
-            fillSquaresPlayer1();
-        } else {
-            in_boat_selcection = false;
-            combat_phase = true;
-            fillSquaresPlayer2();
-            start_combat();
+        if(!boat6) {
+            body.removeChild(yes_button);
+            body.removeChild(no_button);
+            more_ships = false;
+            if (is_player_one) {
+                is_player_one = false;
+                fillSquaresPlayer1();
+            } else {
+                in_boat_selcection = false;
+                in_combat = true;
+                fillSquaresPlayer2();
+                start_combat();
+            }
+            max_ships = num_of_ships;
+            num_of_ships = 1;
+            draw();
         }
-        max_ships = num_of_ships;
-        num_of_ships = 1;
-        draw();
     })
 }
 
@@ -324,6 +348,7 @@ function first_turn_already_a_ship_there(num) {
 
 //helper function to reset the bools when swapping to another ship
 function reset_bools() {
+    first_button = true;
     is_vertical = true;
     is_horizontal = true;
     boat_first_click = true;

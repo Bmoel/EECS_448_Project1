@@ -1,3 +1,4 @@
+let in_combat = false;
 let square = document.querySelectorAll('.square')
 let combat_turn = 0;
 let game_over = true
@@ -167,7 +168,7 @@ function checkFlip () {
     }
     else {
         context.clearRect(600, 100, 100, 100)
-        context.fillText("You can only click 1 ", 695, 150);
+        context.fillText("You can only click 1 ", 715, 150);
         context.fillText("square per turn", 725, 175);
     }
     check_game_over_player_1()
