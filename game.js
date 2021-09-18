@@ -4,6 +4,11 @@ let is_player_one = true; //bool to track current player
 
 //check for dom content loaded and add a click event to all class square elements
 document.addEventListener('DOMContentLoaded', () => {
+    max_ships = prompt("Welcome to Battleship, how many ships do you want to allow?");
+    while(max_ships < 1 || max_ships > 6) {
+        max_ships = prompt("Please input a value that is between 1 and 6 this time");
+    }
+    max_ships = parseInt(max_ships);
     canvas = document.querySelector("#myCanvas");
     context = canvas.getContext("2d");
     let square = document.querySelectorAll('.square')
@@ -14,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     draw();
 })
+
+
 
 let turn = -1;
 

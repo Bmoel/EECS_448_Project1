@@ -35,35 +35,22 @@ html, body {
 yes_button {
     position: absolute;
     top: 210px;
-    left: 690px;
-    width: 3%;
-    height: 4%;
+    left: 695px;
+    width: 8%;
+    height: 8%;
     text-align: center;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 60px;
     background: rgb(32, 138, 37);
-    border: none;
-}
-
-no_button {
-    position: absolute;
-    top: 210px;
-    left: 820px;
-    width: 3%;
-    height: 4%;
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    background: rgb(241, 14, 14);
     border: none;
 }
 
 player_one_turn_button {
     position: absolute;
     top: 210px;
-    left: 730px;
-    width: 5%;
-    height: 9%;
+    left: 700px;
+    width: 8%;
+    height: 8%;
     text-align: center;
     font-weight: bold;
     font-size: 20px;
@@ -74,9 +61,9 @@ player_one_turn_button {
 leave_buffer_button {
     position: absolute;
     top: 210px;
-    left: 730px;
-    width: 5%;
-    height: 6%;
+    left: 700px;
+    width: 8%;
+    height: 8%;
     text-align: center;
     font-weight: bold;
     font-size: 20px;
@@ -87,9 +74,9 @@ leave_buffer_button {
 player_two_turn_button {
     position: absolute;
     top: 210px;
-    left: 730px;
-    width: 5%;
-    height: 9%;
+    left: 700px;
+    width: 8%;
+    height: 8%;
     text-align: center;
     font-weight: bold;
     font-size: 20px;
