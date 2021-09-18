@@ -373,6 +373,12 @@ function buffer() {
             showPlayer2Ships()
             showPlayer2board()
         }
+        if(player_1_turn) {
+            context.fillText("Player 1",760,50);
+        }
+        else {
+            context.fillText("Player 2",760,50);
+        }
         body.removeChild(leave_buffer_button)
         in_buffer = false;
         click = false
