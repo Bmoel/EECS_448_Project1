@@ -8,6 +8,7 @@ let player_1_turn = false
 let player_2_turn = false
 let click = false
 
+//arrays to track player 1's hits on a given target
 let p1_1 = []
 let p1_2 = []
 let p1_3 = []
@@ -15,6 +16,7 @@ let p1_4 = []
 let p1_5 = []
 let p1_6 = []
 
+//arrays to track player 2's hits on a given target
 let p2_1 = []
 let p2_2 = []
 let p2_3 = []
@@ -22,7 +24,12 @@ let p2_4 = []
 let p2_5 = []
 let p2_6 = []
 
-//just the starting function for the combat class that adds the click events to each div
+/**
+        * @author blake richmeier
+        * @version 2
+        * @see boat_selection.js to see original call
+        * the first function called by boat_selection.js to start the combat phase 
+        */
 function start_combat() {
     context.clearRect(0, 0, canvas.width, canvas.height)
     print_board2()
@@ -34,7 +41,16 @@ function start_combat() {
     console.log("called buffer")
 }
 
-//this function will check if the player's array has a ship or a blank space at a given index and append a picture to the div depending
+/**
+        * @author blake richmeier
+        * @version 10
+        * this function will check if the player's array has a ship or a blank
+        * space at a given index and append a picture to the div depending 
+        * it has an iterator for checking what player's turn it is and also had to add a function that 
+        * pushes a char 'a' onto an array whenever there is a hit on a certain length ship that is used for checking
+        * if a ship is sunk also has guards for misplaced clicks
+        * @return after a click event on leave_player2_button it will call buffer()
+        */
 function checkFlip () {
     context.clearRect(0, 0, canvas.width, canvas.height)
     print_board2()
@@ -94,7 +110,7 @@ function checkFlip () {
             else{
                     context.clearRect(600, 100, 100, 100)
                     context.fillText("You can only interact with", 695, 150);
-                    context.fillText("your own board", 725, 175);
+                    context.fillText("  your own board", 725, 175);
                     console.log("here3")
                 }
             }
@@ -155,8 +171,9 @@ function checkFlip () {
             else{
                 context.clearRect(600, 100, 100, 100)
                 context.fillText("You can only interact with", 695, 150);
-                context.fillText("your own board", 725, 175);
+                context.fillText("  your own board", 725, 175);
                 console.log("here7")
+                console.log(click)
             }
         }
     }
@@ -176,6 +193,12 @@ function checkFlip () {
     checkSunk()
 }
 
+/**
+        * @author blake richmeier
+        * @version 2
+        * when called this board will replace the buffer board with a board printing 
+        * player1array showing hits, misses, but hiding where the unhit ships are
+        */
 function showPlayer1board() {
     context.fillText("Guess Opposing ship here",1225,580);
     for(let i = 0; i < 90; i++) {
@@ -206,6 +229,12 @@ function showPlayer1board() {
     }
 }
 
+/**
+        * @author blake richmeier
+        * @version 2
+        * when called this board will replace the buffer board with a board printing player1array,
+        * but showing all hits, misses, unhit ships and sunken ships
+        */
 function showPlayer1ships() {
     context.fillText("Player 1's ships",245,580);
     player_1_turn = true
@@ -251,12 +280,20 @@ function showPlayer1ships() {
     body.appendChild(player_two_turn_button);
 
     player_two_turn_button.addEventListener("click", () => {
-        buffer()
-        player_1_turn = false
-        body.removeChild(player_two_turn_button)
+        if(click){
+            buffer()
+            player_1_turn = false
+            body.removeChild(player_two_turn_button)
+        }
     })
 } 
 
+/**
+        * @author blake richmeier
+        * @version 2
+        * when called this board will replace the buffer board with a board printing 
+        * player2array showing hits, misses, but hiding where the unhit ships are
+        */
 function showPlayer2board() {
     context.fillText("Player 2's ships",1225,580);
     console.log("player 2 board")
@@ -288,6 +325,12 @@ function showPlayer2board() {
     }
 }
 
+/**
+        * @author blake richmeier
+        * @version 2
+        * when called this board will replace the buffer board with a board printing player1array,
+        * but showing all hits, misses, unhit ships and sunken ships
+        */
 function showPlayer2Ships() {
     context.fillText("Guess Opposing ship here",215,580);
     player_2_turn = true
@@ -334,12 +377,20 @@ function showPlayer2Ships() {
 
     player_one_turn_button.addEventListener("click", () => {
         player_2_turn = false
-        buffer()
-        body.removeChild(player_one_turn_button)
+        if(click){
+            buffer()
+            body.removeChild(player_one_turn_button)
+        }
     })
 
 }
 
+/**
+        * @author blake richmeier
+        * @version 2
+        * when called this function will print a buffer board so that players can pass
+        * the laptop back and forth to each other without seeing ship placement
+        */
 function buffer() {
 
     in_buffer = true;
@@ -364,27 +415,36 @@ function buffer() {
     body = document.getElementsByTagName("body")[0];
     body.appendChild(leave_buffer_button);
 
-    leave_buffer_button.addEventListener("click", () => {
-        if(combat_turn%2 == 0){
-            showPlayer1board()
-            showPlayer1ships()
-        }
-        else {
-            showPlayer2Ships()
-            showPlayer2board()
-        }
-        if(player_1_turn) {
-            context.fillText("Player 1",760,50);
-        }
-        else {
-            context.fillText("Player 2",760,50);
-        }
-        body.removeChild(leave_buffer_button)
-        in_buffer = false;
-        click = false
-    })
+    if(!combat_turn || click){
+        leave_buffer_button.addEventListener("click", () => {
+            if(combat_turn%2 == 0){
+                showPlayer1board()
+                showPlayer1ships()
+            }
+            else {
+                showPlayer2Ships()
+                showPlayer2board()
+            }
+            if(player_1_turn) {
+                context.fillText("Player 1",760,50);
+            }
+            else {
+                context.fillText("Player 2",760,50);
+            }
+            body.removeChild(leave_buffer_button)
+            in_buffer = false;
+            click = false
+        })
+    }
 }
 
+/**
+        * @author blake richmeier
+        * @version 2
+        * this function will look at the length of the arrays that are keeping track of hits
+        * on any given length ship. When the length = the number of the ship (i.e. length 5 ship has been hit 
+        * 5 times) then the function will call checkSunkHelper
+        */
 function checkSunk () {
     if(p1_1.length == 1){
         checkSunkHelper(true, 1)
@@ -424,6 +484,14 @@ function checkSunk () {
     }
 }
 
+/**
+        * @author blake richmeier
+        * @version 2
+        * this function will loop through the player array as well as the string from the boat_selection class and 
+        * change 'hit' to 'sunk' for the target number. Both arrays were needed to keep track of where the numbers were 
+        * so that no info is lost while changing
+        * @see boat_selection.js player1, player2 
+        */
 function checkSunkHelper (isPlayerOne1, target) {
     for(let i = 0; i < 80; i++){
         if(isPlayerOne1){
@@ -441,7 +509,11 @@ function checkSunkHelper (isPlayerOne1, target) {
     console.log("player2", player2array)
 }
 
-//Function to check if game is over
+/**
+        * @author blake richmeier
+        * @version 2
+        * this function loops through the player arrays to see if the word ship is gone
+        */
 function check_game_over_player_1() {
     game_over = true
     for(let i = 0; i < 90; i++){
@@ -455,7 +527,11 @@ function check_game_over_player_1() {
 
 }
 
-//Function to check if game is over
+/**
+        * @author blake richmeier
+        * @version 2
+        * this function loops through the player arrays to see if the word ship is gone
+        */
 function check_game_over_player_2() {
     game_over2 = true
     for(let i = 0; i < 90; i++){
