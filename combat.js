@@ -164,7 +164,7 @@ function checkFlip () {
         console.log("in buffer can't click")
         context.clearRect(600, 100, 100, 100)
         context.fillText("You are in buffer phase ", 695, 150);
-        context.fillText("click leave buffer to begin turn", 725, 175);
+        context.fillText("click leave buffer to begin turn", 660, 175);
     }
     else {
         context.clearRect(600, 100, 100, 100)
@@ -177,6 +177,7 @@ function checkFlip () {
 }
 
 function showPlayer1board() {
+    context.fillText("Guess Opposing ship here",1225,580);
     for(let i = 0; i < 90; i++) {
         if(player2array[i] == 'hit'){
             var image = document.createElement('img')
@@ -206,6 +207,7 @@ function showPlayer1board() {
 }
 
 function showPlayer1ships() {
+    context.fillText("Player 1's ships",245,580);
     player_1_turn = true
     console.log("in player 1 ships")
     for (let i = 0; i<90; i++) {
@@ -244,7 +246,7 @@ function showPlayer1ships() {
     combat_turn++
 
     player_two_turn_button = document.createElement("player_two_turn_button");
-    player_two_turn_button.innerHTML = "Player Two's Turn";
+    player_two_turn_button.innerHTML = "Click Here To Swap To Player 2";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(player_two_turn_button);
 
@@ -256,6 +258,7 @@ function showPlayer1ships() {
 } 
 
 function showPlayer2board() {
+    context.fillText("Player 2's ships",1225,580);
     console.log("player 2 board")
     for (let i = 0; i<90; i++) {
         if(player1array[i] == 'hit'){
@@ -286,6 +289,7 @@ function showPlayer2board() {
 }
 
 function showPlayer2Ships() {
+    context.fillText("Guess Opposing ship here",215,580);
     player_2_turn = true
     console.log("in player 2 ships")
     for (let i = 90; i<180; i++) {
@@ -324,7 +328,7 @@ function showPlayer2Ships() {
     combat_turn++
 
     player_one_turn_button = document.createElement("player_one_turn_button");
-    player_one_turn_button.innerHTML = "Player One's Turn";
+    player_one_turn_button.innerHTML = "Click Here To Swap to Player One";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(player_one_turn_button);
 
@@ -356,7 +360,7 @@ function buffer() {
         }
 
     leave_buffer_button = document.createElement("leave_buffer_button");
-    leave_buffer_button.innerHTML = "Leave Buffer";
+    leave_buffer_button.innerHTML = "Click Here To Start The Turn";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(leave_buffer_button);
 

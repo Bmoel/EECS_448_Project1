@@ -61,7 +61,7 @@ no_button {
 player_one_turn_button {
     position: absolute;
     top: 210px;
-    left: 755px;
+    left: 730px;
     width: 5%;
     height: 9%;
     text-align: center;
@@ -74,7 +74,7 @@ player_one_turn_button {
 leave_buffer_button {
     position: absolute;
     top: 210px;
-    left: 755px;
+    left: 730px;
     width: 5%;
     height: 6%;
     text-align: center;
@@ -87,7 +87,7 @@ leave_buffer_button {
 player_two_turn_button {
     position: absolute;
     top: 210px;
-    left: 755px;
+    left: 730px;
     width: 5%;
     height: 9%;
     text-align: center;
