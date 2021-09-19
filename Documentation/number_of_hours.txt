@@ -33,3 +33,8 @@ Ben Moeller
     9/17 - changed boat_selection.js to be in line with changes: 1 hr
     9/18 - Searched and fixed various bugs - 2 hrs
     9/19 - Bug fixes and documentation - 
+
+Sam Jerguson
+    9/14 - 3 hrs
+    9/15 - 2 hrs 15 mins
+    9/18 - 1 hr
