@@ -51,37 +51,37 @@ function start_combat() {
         * if a ship is sunk also has guards for misplaced clicks
         * @return after a click event on leave_player2_button it will call buffer()
         */
-function checkFlip () {
+function checkFlip() {
     context.clearRect(0, 0, canvas.width, canvas.height)
     print_board2()
-    if(!in_buffer && click == false) {
-        if(player_2_turn){
-            if(this.id <= 89){
-                if(player1array[this.id] == 'ship'){
+    if (!in_buffer && click == false) {
+        if (player_2_turn) {
+            if (this.id <= 89) {
+                if (player1array[this.id] == 'ship') {
 
                     player1array[this.id] = 'hit'
 
-                    if(player_ships_placed.player1.charAt(parseInt(this.id)) == 1){
+                    if (player_ships_placed.player1.charAt(parseInt(this.id)) == 1) {
                         p1_1 = p1_1 + 'a'
                         console.log(p1_1)
                     }
-                    else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 2){
+                    else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 2) {
                         p1_2 = p1_2 + 'a'
                         console.log(p1_2)
                     }
-                    else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 3){
+                    else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 3) {
                         p1_3 = p1_3 + 'a'
                         console.log(p1_3)
                     }
-                    else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 4){
+                    else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 4) {
                         p1_4 = p1_4 + 'a'
                         console.log(p1_4)
                     }
-                    else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 5){
+                    else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 5) {
                         p1_5 = p1_3 + 'a'
                         console.log(p1_5)
                     }
-                    else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 6){
+                    else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 6) {
                         p1_6 = p1_3 + 'a'
                         console.log(p1_6)
                     }
@@ -92,12 +92,12 @@ function checkFlip () {
                     document.getElementById(this.id).appendChild(image)
                     console.log("here1")
                 }
-                else if(player1array[this.id] == 'sunk'){
+                else if (player1array[this.id] == 'sunk') {
                     var image = document.createElement('img')
                     image.src = 'images/sunken.png'
                     document.getElementById(this.id).innerHTML = ''
                     document.getElementById(this.id).appendChild(image)
-                } 
+                }
                 else {
                     player1array[this.id] = 'miss'
                     var image = document.createElement('img')
@@ -107,40 +107,40 @@ function checkFlip () {
                 }
                 click = true
             }
-            else{
-                    //context.clearRect(600, 100, 100, 100)
-                    context.fillText("You can only interact with", 695, 150);
-                    context.fillText("  your own board", 725, 175);
-                    console.log("here3")
-                }
+            else {
+                //context.clearRect(600, 100, 100, 100)
+                context.fillText("You can only interact with", 695, 150);
+                context.fillText("  your own board", 725, 175);
+                console.log("here3")
             }
-        else if(player_1_turn){
-            if(this.id >= 89){
-                if(player2array[this.id - 90] == 'ship'){
+        }
+        else if (player_1_turn) {
+            if (this.id >= 89) {
+                if (player2array[this.id - 90] == 'ship') {
 
-                    player2array[this.id-90] = 'hit'
+                    player2array[this.id - 90] = 'hit'
 
-                    if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 1){
+                    if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 1) {
                         p2_1 = p2_1 + 'a'
                         console.log(p2_1)
                     }
-                    else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 2){
+                    else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 2) {
                         p2_2 = p2_2 + 'a'
                         console.log(p2_2)
                     }
-                    else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 3){
+                    else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 3) {
                         p2_3 = p2_3 + 'a'
                         console.log(p2_3)
                     }
-                    else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 4){
+                    else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 4) {
                         p2_4 = p2_4 + 'a'
                         console.log(p2_4)
                     }
-                    else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 5){
+                    else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 5) {
                         p2_5 = p2_3 + 'a'
                         console.log(p2_5)
                     }
-                    else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 6){
+                    else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 6) {
                         p2_6 = p2_3 + 'a'
                         console.log(p2_6)
                     }
@@ -151,24 +151,24 @@ function checkFlip () {
                     document.getElementById(this.id).appendChild(image)
                     console.log("here4")
                 }
-                else if(player2array[this.id-90] == 'sunk'){
+                else if (player2array[this.id - 90] == 'sunk') {
                     var image = document.createElement('img')
                     image.src = 'images/sunken.png'
                     document.getElementById(this.id).innerHTML = ''
                     document.getElementById(this.id).appendChild(image)
                     console.log("here5")
-                } 
-                else{
+                }
+                else {
                     player2array[this.id - 90] = 'miss'
                     var image = document.createElement('img')
                     image.src = 'images/water.png'
                     document.getElementById(this.id).innerHTML = ''
                     document.getElementById(this.id).appendChild(image)
                     console.log("here5")
-                } 
+                }
                 click = true
             }
-            else{
+            else {
                 context.clearRect(600, 100, 100, 100)
                 context.fillText("You can only interact with", 695, 150);
                 context.fillText("  your own board", 725, 175);
@@ -177,7 +177,7 @@ function checkFlip () {
             }
         }
     }
-    else if (in_buffer){
+    else if (in_buffer) {
         console.log("in buffer can't click")
         context.clearRect(600, 100, 100, 100)
         context.fillText("You are in buffer phase ", 705, 150);
@@ -200,31 +200,31 @@ function checkFlip () {
         * player1array showing hits, misses, but hiding where the unhit ships are
         */
 function showPlayer1board() {
-    context.fillText("Guess Opposing ship here",1225,580);
-    for(let i = 0; i < 90; i++) {
-        if(player2array[i] == 'hit'){
+    context.fillText("Guess Opposing ship here", 1225, 580);
+    for (let i = 0; i < 90; i++) {
+        if (player2array[i] == 'hit') {
             var image = document.createElement('img')
             image.src = 'images/fire.png'
-            document.getElementById(i+90).innerHTML = ''
-            document.getElementById(i+90).appendChild(image)
+            document.getElementById(i + 90).innerHTML = ''
+            document.getElementById(i + 90).appendChild(image)
         }
         else if (player2array[i] == 'miss') {
             var image = document.createElement('img')
             image.src = 'images/water.png'
-            document.getElementById(i+90).innerHTML = ''
-            document.getElementById(i+90).appendChild(image)
+            document.getElementById(i + 90).innerHTML = ''
+            document.getElementById(i + 90).appendChild(image)
         }
         else if (player2array[i] == 'sunk') {
             var image = document.createElement('img')
             image.src = 'images/sunken.png'
-            document.getElementById(i+90).innerHTML = ''
-            document.getElementById(i+90).appendChild(image)
+            document.getElementById(i + 90).innerHTML = ''
+            document.getElementById(i + 90).appendChild(image)
         }
         else {
             var image = document.createElement('img')
             image.src = 'images/team10.png'
-            document.getElementById(i+90).innerHTML = ''
-            document.getElementById(i+90).appendChild(image)
+            document.getElementById(i + 90).innerHTML = ''
+            document.getElementById(i + 90).appendChild(image)
         }
     }
 }
@@ -236,11 +236,11 @@ function showPlayer1board() {
         * but showing all hits, misses, unhit ships and sunken ships
         */
 function showPlayer1ships() {
-    context.fillText("Your ships",245,580);
+    context.fillText("Your ships", 245, 580);
     player_1_turn = true
     console.log("in player 1 ships")
-    for (let i = 0; i<90; i++) {
-        if(player1array[i] == 'hit'){
+    for (let i = 0; i < 90; i++) {
+        if (player1array[i] == 'hit') {
             var image = document.createElement('img')
             image.src = 'images/fire.png'
             document.getElementById(i).innerHTML = ''
@@ -252,13 +252,32 @@ function showPlayer1ships() {
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
         }
-        else if (player1array[i] == 'ship'){
+        else if (player1array[i] == 'ship') {
             var image = document.createElement('img')
-            image.src = 'images/ship.png'
+            if (player_ships_placed.player1.charAt(i) == 1)
+            {
+                image.src = 'images/ship1.png';
+            }
+            else if (player_ships_placed.player1.charAt(i) == 2) {
+                image.src = 'images/ship2.png';
+            }
+            else if (player_ships_placed.player1.charAt(i) == 3) {
+                image.src = 'images/ship3.png';
+            }
+            else if (player_ships_placed.player1.charAt(i) == 4) {
+                image.src = 'images/ship4.png';
+            }
+            else if (player_ships_placed.player1.charAt(i) == 5) {
+                image.src = 'images/ship5.png';
+            }
+            else if (player_ships_placed.player1.charAt(i) == 6) {
+                image.src = 'images/ship6.png';
+            }
             document.getElementById(i).innerHTML = ''
-            document.getElementById(i).appendChild(image)
+            document.getElementById(i).appendChild(image)           
+            
         }
-        else if (player1array[i] == 'sunk'){
+        else if (player1array[i] == 'sunk') {
             var image = document.createElement('img')
             image.src = 'images/sunken.png'
             document.getElementById(i).innerHTML = ''
@@ -280,13 +299,13 @@ function showPlayer1ships() {
     body.appendChild(player_two_turn_button);
 
     player_two_turn_button.addEventListener("click", () => {
-        if(click){
+        if (click) {
             buffer()
             player_1_turn = false
             body.removeChild(player_two_turn_button)
         }
     })
-} 
+}
 
 /**
         * @author blake richmeier
@@ -295,10 +314,10 @@ function showPlayer1ships() {
         * player2array showing hits, misses, but hiding where the unhit ships are
         */
 function showPlayer2board() {
-    context.fillText("Your ships",1260,580);
+    context.fillText("Your ships", 1260, 580);
     console.log("player 2 board")
-    for (let i = 0; i<90; i++) {
-        if(player1array[i] == 'hit'){
+    for (let i = 0; i < 90; i++) {
+        if (player1array[i] == 'hit') {
             var image = document.createElement('img')
             image.src = 'images/fire.png'
             document.getElementById(i).innerHTML = ''
@@ -332,29 +351,46 @@ function showPlayer2board() {
         * but showing all hits, misses, unhit ships and sunken ships
         */
 function showPlayer2Ships() {
-    context.fillText("Guess Opposing ship here",215,580);
+    context.fillText("Guess Opposing ship here", 215, 580);
     player_2_turn = true
     console.log("in player 2 ships")
-    for (let i = 90; i<180; i++) {
-        if(player2array[i-90] == 'hit'){
+    for (let i = 90; i < 180; i++) {
+        if (player2array[i - 90] == 'hit') {
             var image = document.createElement('img')
             image.src = 'images/fire.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
         }
-        else if (player2array[i-90] == 'miss') {
+        else if (player2array[i - 90] == 'miss') {
             var image = document.createElement('img')
             image.src = 'images/water.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
         }
-        else if (player2array[i-90] == 'ship'){
+        else if (player2array[i - 90] == 'ship') {
             var image = document.createElement('img')
-            image.src = 'images/ship.png'
+            if (player_ships_placed.player2.charAt(i - 90) == 1) {
+                image.src = 'images/ship1.png';
+            }
+            else if (player_ships_placed.player2.charAt(i - 90) == 2) {
+                image.src = 'images/ship2.png';
+            }
+            else if (player_ships_placed.player2.charAt(i - 90) == 3) {
+                image.src = 'images/ship3.png';
+            }
+            else if (player_ships_placed.player2.charAt(i - 90) == 4) {
+                image.src = 'images/ship4.png';
+            }
+            else if (player_ships_placed.player2.charAt(i - 90) == 5) {
+                image.src = 'images/ship5.png';
+            }
+            else if (player_ships_placed.player2.charAt(i - 90) == 6) {
+                image.src = 'images/ship6.png';
+            }
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
         }
-        else if (player2array[i-90] == 'sunk'){
+        else if (player2array[i - 90] == 'sunk') {
             var image = document.createElement('img')
             image.src = 'images/sunken.png'
             document.getElementById(i).innerHTML = ''
@@ -377,7 +413,7 @@ function showPlayer2Ships() {
 
     player_one_turn_button.addEventListener("click", () => {
         player_2_turn = false
-        if(click){
+        if (click) {
             buffer()
             body.removeChild(player_one_turn_button)
         }
@@ -395,29 +431,28 @@ function buffer() {
 
     in_buffer = true;
 
-    for(let i = 0; i < 90; i++)
-    {
-            var image = document.createElement('img')
-            image.src = 'images/team10.png'
-            document.getElementById(i).innerHTML = ''
-            document.getElementById(i).appendChild(image)
+    for (let i = 0; i < 90; i++) {
+        var image = document.createElement('img')
+        image.src = 'images/team10.png'
+        document.getElementById(i).innerHTML = ''
+        document.getElementById(i).appendChild(image)
     }
-    
-    for(let i = 90; i< 180; i++){
-            var image = document.createElement('img')
-            image.src = 'images/team10.png'
-            document.getElementById(i).innerHTML = ''
-            document.getElementById(i).appendChild(image)
-        }
+
+    for (let i = 90; i < 180; i++) {
+        var image = document.createElement('img')
+        image.src = 'images/team10.png'
+        document.getElementById(i).innerHTML = ''
+        document.getElementById(i).appendChild(image)
+    }
 
     leave_buffer_button = document.createElement("leave_buffer_button");
     leave_buffer_button.innerHTML = "Click Here To Start The Turn";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(leave_buffer_button);
 
-    if(!combat_turn || click){
+    if (!combat_turn || click) {
         leave_buffer_button.addEventListener("click", () => {
-            if(combat_turn%2 == 0){
+            if (combat_turn % 2 == 0) {
                 showPlayer1board()
                 showPlayer1ships()
             }
@@ -425,13 +460,13 @@ function buffer() {
                 showPlayer2Ships()
                 showPlayer2board()
             }
-            if(player_1_turn) {
+            if (player_1_turn) {
                 context.font = "Bold 12pt Candara";
-                context.fillText("Player 1",760,50);
+                context.fillText("Player 1", 760, 50);
             }
             else {
                 context.font = "Bold 12pt Candara";
-                context.fillText("Player 2",760,50);
+                context.fillText("Player 2", 760, 50);
             }
             body.removeChild(leave_buffer_button)
             in_buffer = false;
@@ -447,41 +482,41 @@ function buffer() {
         * on any given length ship. When the length = the number of the ship (i.e. length 5 ship has been hit 
         * 5 times) then the function will call checkSunkHelper
         */
-function checkSunk () {
-    if(p1_1.length == 1){
+function checkSunk() {
+    if (p1_1.length == 1) {
         checkSunkHelper(true, 1)
     }
-    if (p1_2.length == 2){
+    if (p1_2.length == 2) {
         checkSunkHelper(true, 2)
     }
-    if (p1_3.length == 3){
+    if (p1_3.length == 3) {
         checkSunkHelper(true, 3)
     }
-    if (p1_4.length == 4){
+    if (p1_4.length == 4) {
         checkSunkHelper(true, 4)
     }
-    if (p1_5.length == 5){
+    if (p1_5.length == 5) {
         checkSunkHelper(true, 5)
     }
-    if (p1_6.length == 6){
+    if (p1_6.length == 6) {
         checkSunkHelper(true, 6)
     }
-    if(p2_1.length == 1){
+    if (p2_1.length == 1) {
         checkSunkHelper(false, 1)
     }
-    if (p2_2.length == 2){
+    if (p2_2.length == 2) {
         checkSunkHelper(false, 2)
     }
-    if (p2_3.length == 3){
+    if (p2_3.length == 3) {
         checkSunkHelper(false, 3)
     }
-    if (p2_4.length == 4){
+    if (p2_4.length == 4) {
         checkSunkHelper(false, 4)
     }
-    if (p2_5.length == 5){
+    if (p2_5.length == 5) {
         checkSunkHelper(false, 5)
     }
-    if (p2_6.length == 6){
+    if (p2_6.length == 6) {
         checkSunkHelper(false, 6)
     }
 }
@@ -494,18 +529,18 @@ function checkSunk () {
         * so that no info is lost while changing
         * @see boat_selection.js player1, player2 
         */
-function checkSunkHelper (isPlayerOne1, target) {
-    for(let i = 0; i < 80; i++){
-        if(isPlayerOne1){
-            if(player_ships_placed.player1.charAt(i) == target){
+function checkSunkHelper(isPlayerOne1, target) {
+    for (let i = 0; i < 80; i++) {
+        if (isPlayerOne1) {
+            if (player_ships_placed.player1.charAt(i) == target) {
                 player1array[i] = 'sunk'
             }
         }
-        else{
-            if(player_ships_placed.player2.charAt(i) == target){
+        else {
+            if (player_ships_placed.player2.charAt(i) == target) {
                 player2array[i] = 'sunk'
             }
-        } 
+        }
     }
     console.log("player1", player1array)
     console.log("player2", player2array)
@@ -518,14 +553,14 @@ function checkSunkHelper (isPlayerOne1, target) {
         */
 function check_game_over_player_1() {
     game_over = true
-    for(let i = 0; i < 90; i++){
-        if(player1array[i] == 'ship'){
+    for (let i = 0; i < 90; i++) {
+        if (player1array[i] == 'ship') {
             game_over = false
         }
     }
-    if(game_over){
+    if (game_over) {
         alert("Game over! Player 2 wins! Refresh to play again")
-    } 
+    }
 
 }
 
@@ -536,13 +571,13 @@ function check_game_over_player_1() {
         */
 function check_game_over_player_2() {
     game_over2 = true
-    for(let i = 0; i < 90; i++){
-        if(player2array[i] == 'ship'){
+    for (let i = 0; i < 90; i++) {
+        if (player2array[i] == 'ship') {
             game_over2 = false
         }
     }
-    if(game_over2){
+    if (game_over2) {
         alert("Game over! Player 1 wins! Refresh to play again")
-    } 
+    }
 
 }
