@@ -268,8 +268,10 @@ function boat_check_valid_move(num) {
 }
 
 /**
-        * @author 
-        * @version
+        * @author Alec Mcglynn
+        * @description checks whether or not the boat has enough space to fit based on the first square
+        * @param {num} - number that corresponds to a number on the board
+        * @return bool 
         */
 function valid_first_block(num) {
     let space_up = 0, space_down = 0, space_left = 0, space_right = 0
@@ -325,9 +327,9 @@ function valid_first_block(num) {
 
 /**
         * @author Sam Jerguson
-        * @param {num}
-        * @return {bool} 
-        * @desc Checks whether there is already a ship on the first square clicked
+        * @param {num} - number that corresponds to a number on the board
+        * @return bool
+        * @description checks if ship is already placed on a square
         */
 function first_turn_already_a_ship_there(num) {
     if (is_player_one) {
@@ -349,7 +351,7 @@ function first_turn_already_a_ship_there(num) {
 /**
         * @author Ben Moeller
         * @return {void}
-        * helper function to reset the bools when swapping to another ship
+        * @description function to reset the bools when swapping to another ship
         */
 function reset_bools() {
     first_button = true;
@@ -361,7 +363,7 @@ function reset_bools() {
 /**
         * @author Ben Moeller
         * @return {void}
-        * helper function to help print out instructions to the board
+        * @description function to help print out instructions to the board
         */
 function print_boat_sel_inst() {
     context.fillText("Please select the blocks where you want", 635, 75);
