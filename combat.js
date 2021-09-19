@@ -408,7 +408,7 @@ function showPlayer2Ships() {
     combat_turn++
 
     player_one_turn_button = document.createElement("player_one_turn_button");
-    player_one_turn_button.innerHTML = "Click Here To Swap to Player One After Firing Shot";
+    player_one_turn_button.innerHTML = "Click Here To Swap to Player 1 After Firing Shot";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(player_one_turn_button);
 
