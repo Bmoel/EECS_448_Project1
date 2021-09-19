@@ -16,7 +16,11 @@ Future projects will likely have more accurate estimates
 
 Hours tracking
 Alec
-    9/16 5:30 - 7:40
+    9/6 group meeting 20 min
+    9/12 45 min
+    9/14 group meeting 30 min
+    9/16 coding 2 hours
+    9/18 documentation + final testing 1:30
 
 Ben Moeller
     9/6 - Group Meeting: 20 min
