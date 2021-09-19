@@ -78,12 +78,12 @@ function checkFlip () {
                         console.log(p1_4)
                     }
                     else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 5){
-                        p1_5 = p1_3 + 'a'
-                        console.log(p1_5)
+                        p1_5 = p1_5 + 'a'
+                        console.log("p1_6", p1_5)
                     }
                     else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 6){
-                        p1_6 = p1_3 + 'a'
-                        console.log(p1_6)
+                        p1_6 = p1_6 + 'a'
+                        console.log("p1_6", p1_6)
                     }
 
                     var image = document.createElement('img')
@@ -106,6 +106,7 @@ function checkFlip () {
                     document.getElementById(this.id).appendChild(image)
                 }
                 click = true
+                document.getElementById(this.id).removeEventListener("click", checkFlip)
             }
             else{
                     context.clearRect(600, 100, 100, 100)
@@ -137,11 +138,11 @@ function checkFlip () {
                         console.log(p2_4)
                     }
                     else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 5){
-                        p2_5 = p2_3 + 'a'
+                        p2_5 = p2_5 + 'a'
                         console.log(p2_5)
                     }
                     else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 6){
-                        p2_6 = p2_3 + 'a'
+                        p2_6 = p2_6 + 'a'
                         console.log(p2_6)
                     }
 
@@ -167,6 +168,7 @@ function checkFlip () {
                     console.log("here5")
                 } 
                 click = true
+                document.getElementById(this.id).removeEventListener("click",  checkFlip)
             }
             else{
                 context.clearRect(600, 100, 100, 100)
