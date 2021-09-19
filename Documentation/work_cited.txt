@@ -18,3 +18,6 @@ Added line 5 in game.js
 
 9/19 Ben Moeller- https://www.valentinog.com/blog/jsdoc/
 Used this article to help learn how to use JSdocs
+
+9/10 Blake Richmeier- https://www.youtube.com/watch?v=lhNdUVh3qCc&t=689s
+Used this video to learn how to properly use JS to create a game and interact with HTML

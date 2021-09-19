@@ -27,7 +27,6 @@ let p2_6 = []
 /**
         * @author blake richmeier
         * @version 2
-        * @see boat_selection.js to see original call
         * the first function called by boat_selection.js to start the combat phase
         */
 function start_combat() {

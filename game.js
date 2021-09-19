@@ -2,7 +2,12 @@ let canvas; //global canvas
 let context; //global context
 let is_player_one = true; //bool to track current player
 
-//check for dom content loaded and add a click event to all class square elements
+/**
+        * @author blake richmeier
+        * @version 2
+        * checks for dom content and then prompts to ask how many ships should be played with
+        * creates canvas and creates the board
+        */
 document.addEventListener('DOMContentLoaded', () => {
     max_ships = prompt("Welcome to Battleship, how many ships do you want to allow?");
     while(max_ships < 1 || max_ships > 6) {
@@ -24,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 let turn = -1;
 
+
 //player array for player 1 updated at each click event when turn%2 == 0
 const player1array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
                         20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,
@@ -35,8 +41,12 @@ const player2array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
                         20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,
                         40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,
                         60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89]
-
-//updates player array when a click event happens NOTE: will eventually be used to print to the screen where hits/misses/empty spaces are
+/**
+        * @author blake richmeier
+        * @version 2
+        * updates player array when a click event happens 
+        * used to print to the screen where hits/misses/empty spaces are
+        */
 function checkHit (squareToCheck, isPlayerOne) {
         turn++;
         if(isPlayerOne){
@@ -51,6 +61,11 @@ function checkHit (squareToCheck, isPlayerOne) {
         }
 }
 
+/**
+        * @author blake richmeier
+        * @version 1
+        * creates blank board for players to interact with for player 1
+        */
 function fillSquaresPlayer1 () {
     for (let i = 0; i < 90; i++){
         var image = document.createElement('img')
@@ -60,6 +75,11 @@ function fillSquaresPlayer1 () {
     }
 }
 
+/**
+        * @author blake richmeier
+        * @version 1
+        * creates blank board for players to interact with for player 2
+        */
 function fillSquaresPlayer2 () {
     for (let i = 90; i < 180; i++){
         var image = document.createElement('img')
@@ -69,7 +89,11 @@ function fillSquaresPlayer2 () {
     }
 }
 
-//Draws that current animation frame in according to what it tells to print
+/**
+        * @author blake richmeier
+        * @version 2
+        * Draws that current animation frame in according to what it tells to print
+        */
 function draw() {
     context.canvas.width = window.innerWidth;
     context.canvas.height = window.innerHeight;
@@ -93,7 +117,11 @@ function draw() {
     }
 }
 
-//Function to help print letters and numbers the the board
+/**
+        * @author Ben Moeller
+        * @version 2
+        * Function to help print letters and numbers tO the board
+        */
 function print_board() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
     context.font = "Bold 12pt Candara";
@@ -117,6 +145,12 @@ function print_board() {
     }
 }
 
+/**
+        * @author Ben Moeller
+        * @version 2
+        * Function to help print letters and numbers tO the board, needed second 
+        * function for combat phase
+        */
 function print_board2() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
     context.font = "Bold 12pt Candara";
@@ -133,9 +167,7 @@ function print_board2() {
     }
 }
 
-
 var Ship = function(name, location) {
-
   this.name = name ;
   this. location = location;
   this. sunk = false;
@@ -147,9 +179,15 @@ var Ship = function(name, location) {
             }
   }
   this.sunk = true ;
-};
+    };
 };
 
+/**
+        * @author Ben Moeller
+        * @version 2
+        * Function to help print letters and numbers tO the board, needed second 
+        * function for combat phase
+        */
 var sunk  = function(){
  
   //check ship is sunk//
@@ -160,25 +198,11 @@ var sunk  = function(){
    var ship5 = ship5.checkSunk();
    var ship6 = ship6.checkSunk();
 
-// if ship is sunnk//
-   for(var i = 0; i < arry.length; i++) {
-        if(arry[i].sunk === true) {
-          var call =  document.addEventListener(arry.name);
-          
-      }
-
-          game.Over();
-          
+    // if ship is sunk/
+    for(var i = 0; i < arry.length; i++) {
+            if(arry[i].sunk === true) {
+            var call =  document.addEventListener(arry.name);
+        }
+            game.Over();
+    }
 }
-}
-
-//Commented this out because it was causing errors
-// Over: function(){  //
-//   for (var i = 0; i < arry.length; i++) {
-//     if(arr[i].sunk !== true) {
-//       return false;
-//     }
-//     }
-//     this.ship.gameOver = true;
-// },
-// }

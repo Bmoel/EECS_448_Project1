@@ -33,3 +33,16 @@ Ben Moeller
     9/17 - changed boat_selection.js to be in line with changes: 1 hr
     9/18 - Searched and fixed various bugs - 2 hrs
     9/19 - Bug fixes and documentation - 
+
+Blake Richmeier
+    9/6 - Group Meeting: 20 min
+    9/7 - TA meeting: 20 min
+    9/9 - created board and added pictures: 1 hour
+    9/10 - created game.js to be the master class for the game: 2 hrs
+    9/11 - added combat.js and got initial functionality: 5 hrs
+    9/12 - Lab 3 Meeting: 45 minutes
+    9/13 - Worked on combat.js: 2 hours
+    9/14 - combat bug fixes: 4 hrs
+    9/16 - combat bug fixes: 2 hrs
+    9/18 - added final features to combat.js: 4 hrs
+    9/19 - finished documentation: 2 hours 
