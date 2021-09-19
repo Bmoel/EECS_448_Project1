@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: boat_selection.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: boat_selection.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let in_boat_selcection = true; //if in the boat selection phase
+let num_of_ships = 1; //holds the number of ships
+let ship_inc = 1; //increment that counts up to compare with the number of ships
+let max_ships; //maximum amount of ships that players can place
+let more_ships = false; //Bool to track whether more ships need to be placed
+let boat_first_click = true; //If the new boat is the first block being placed
+let is_vertical = true; //If the boat is in a vertical orientation
+let is_horizontal = true; //If the boat is in a horizontal orientaion
+let boat6 = false;
+let first_button = true;
+var yes_button; //varibale to hold the yes_button
+var body; //body declaration to help with the placement of buttons
+var no_button; //variable to hold the no_button
+
+//Strings that will hold where the boats are
+let player_ships_placed = {
+    player1: "..........................................................................................",
+    player2: "..........................................................................................",
+}
+
+/**
+        * @author Ben Moeller
+        * @see game.js to see original declaration
+        * @return {void}
+        * @description function that activates whenever there is a click on the board
+        */
+function boat_sel_click() {
+    console.log(this);
+    if (in_boat_selcection) {
+        if (boat_first_click &amp;&amp; !first_turn_already_a_ship_there(parseInt(this.id)) &amp;&amp; valid_first_block(parseInt(this.id))) {
+            store_ship(parseInt(this.id));
+            var shipImage = document.createElement('img');
+            if (num_of_ships == 1)
+                shipImage.src = 'images/ship1.png';
+            else if (num_of_ships == 2)
+                shipImage.src = 'images/ship2.png';
+            else if (num_of_ships == 3)
+                shipImage.src = 'images/ship3.png';
+            else if (num_of_ships == 4)
+                shipImage.src = 'images/ship4.png';
+            else if (num_of_ships == 5)
+                shipImage.src = 'images/ship5.png';
+            else if (num_of_ships == 6)
+                shipImage.src = 'images/ship6.png';
+
+            document.getElementById(this.id).appendChild(shipImage)
+            ship_inc++;
+            boat_first_click = false;
+        }
+        else if (ship_inc &lt;= num_of_ships &amp;&amp; boat_check_valid_move(parseInt(this.id))) {
+            store_ship(parseInt(this.id));
+            var shipImage = document.createElement('img')
+            if (num_of_ships == 1)
+                shipImage.src = 'images/ship1.png';
+            else if (num_of_ships == 2)
+                shipImage.src = 'images/ship2.png';
+            else if (num_of_ships == 3)
+                shipImage.src = 'images/ship3.png';
+            else if (num_of_ships == 4)
+                shipImage.src = 'images/ship4.png';
+            else if (num_of_ships == 5)
+                shipImage.src = 'images/ship5.png';
+            else if (num_of_ships == 6)
+                shipImage.src = 'images/ship6.png';
+            document.getElementById(this.id).innerHTML = ''
+            document.getElementById(this.id).appendChild(shipImage)
+            ship_inc++;
+        }
+        else if (ship_inc > num_of_ships) {
+            context.fillText("Max number of blocks placed", 675, 475);
+        }
+        else if (boat_check_valid_move(parseInt(this.id)) == false) {
+            if (first_turn_already_a_ship_there(parseInt(this.id))) {
+                context.fillText("Already a ship there!", 709, 550);
+            }
+            else {
+                context.fillText("Please selects blocks to create", 675, 600);
+                context.fillText("a valid 1x" + num_of_ships + " ship", 735, 625);
+            }
+        }
+
+        if (!is_player_one &amp;&amp; num_of_ships == 7) {
+            in_boat_selcection = false;
+            in_combat = true;
+            fillSquaresPlayer2();
+            start_combat();
+        }
+        else if (ship_inc == max_ships + 1 &amp;&amp; is_player_one &amp;&amp; ship_inc == num_of_ships + 1) {
+            boat6 = true;
+            if (first_button) {
+                context.fillText("Ready to pass", 735, 150);
+                context.fillText("to player 2?", 740, 175);
+                ask_more_ships();
+            }
+        }
+        else if (ship_inc == num_of_ships + 1) {
+            if (first_button) {
+                context.fillText("Are you done adding boat " + num_of_ships + "?", 675, 150);
+                ask_more_ships();
+            }
+        }
+    }
+}
+
+/**
+        * @author Ben Moeller
+        * @return {void}
+        * @description function that helps the game reset the bools and increments counters for each ship number that is currently being placed
+        */
+function place_ships() {
+    if (num_of_ships == 1) {
+        reset_bools();
+        ship_inc = 1;
+        print_boat_sel_inst()
+    }
+    else if (num_of_ships == 2 &amp;&amp; more_ships == true) {
+        reset_bools();
+        ship_inc = 1;
+        print_boat_sel_inst()
+    }
+    else if (num_of_ships == 3 &amp;&amp; more_ships == true) {
+        reset_bools();
+        ship_inc = 1;
+        print_boat_sel_inst()
+    }
+    else if (num_of_ships == 4 &amp;&amp; more_ships == true) {
+        reset_bools();
+        ship_inc = 1;
+        print_boat_sel_inst()
+    }
+    else if (num_of_ships == 5 &amp;&amp; more_ships == true) {
+        reset_bools();
+        ship_inc = 1;
+        print_boat_sel_inst()
+    }
+    else if (num_of_ships == 6 &amp;&amp; more_ships == true) {
+        reset_bools();
+        ship_inc = 1;
+        print_boat_sel_inst()
+    }
+}
+
+/**
+        * @author Ben Moeller
+        * @version 2
+        * @return {void}
+        * @description function that helps make the yes button, along with what to do when clicking yes
+        */
+function ask_more_ships() {
+    first_button = false;
+    yes_button = document.createElement("yes_button");
+    yes_button.innerHTML = "Yes";
+    body = document.getElementsByTagName("body")[0];
+    body.appendChild(yes_button);
+
+    yes_button.addEventListener("click", () => {
+        body.removeChild(yes_button);
+        num_of_ships++;
+        more_ships = true;
+        if (num_of_ships == max_ships + 1 &amp;&amp; is_player_one) {
+            if (is_player_one) {
+                fillSquaresPlayer1()
+            }
+            else {
+                fillSquaresPlayer2()
+            }
+            is_player_one = false;
+            num_of_ships = 1;
+        }
+        else if (!is_player_one &amp;&amp; num_of_ships == max_ships + 1) {
+            in_boat_selcection = false;
+            in_combat = true;
+            fillSquaresPlayer2();
+            start_combat();
+            console.log("should start combat phase")
+        }
+        else if (!is_player_one &amp;&amp; ship_inc == 7) {
+            in_boat_selcection = false;
+            in_combat = true;
+            fillSquaresPlayer2();
+            start_combat();
+        }
+        draw();
+    })
+}
+
+/**
+        * @author Ben Moeller
+        * @param {num} - number that corresponds to a block in the board
+        * @return {void}
+        * @description function that stores the ships in the player strings, as well as calls checkHit in order to store data in a separate array (checkHit() is in game.js)
+        */
+function store_ship(num) {
+    if (is_player_one) {
+        player_ships_placed.player1 =
+            player_ships_placed.player1.slice(0, num) +
+            num_of_ships +
+            player_ships_placed.player1.slice(num + 1, 90)
+        checkHit(num, is_player_one)
+        console.log(player_ships_placed.player1);
+    }
+    else {
+        player_ships_placed.player2 =
+            player_ships_placed.player2.slice(0, num - 90) +
+            num_of_ships +
+            player_ships_placed.player2.slice((num - 90) + 1, 90)
+        checkHit(num, is_player_one)
+        console.log(player_ships_placed.player2);
+    }
+}
+
+/**
+        * @author Ben Moeller
+        * @param {num} - number that corresponds to a number on the board
+        * @return {bool}
+        * @description function that checks if the block being placed is a valid move for the current boat
+        */
+function boat_check_valid_move(num) {
+    if (is_player_one) {
+        for (i = 1; i &lt; num_of_ships; i++) {
+            if (player_ships_placed.player1.charAt(num) != ".") { //&lt;-- checks to ensure there isn't already a ship placed there
+                return false;
+            }
+            else if (player_ships_placed.player1.charAt(num - i) == num_of_ships &amp;&amp; is_horizontal) {
+                is_vertical = false;
+                return true
+            }
+            else if (player_ships_placed.player1.charAt(num + i) == num_of_ships &amp;&amp; is_horizontal) {
+                is_vertical = false;
+                return true;
+            }
+            else if (player_ships_placed.player1.charAt(num - (i * 10)) == num_of_ships &amp;&amp; is_vertical) {
+                is_horizontal = false;
+                return true;
+            }
+            else if (player_ships_placed.player1.charAt(num + (i * 10)) == num_of_ships &amp;&amp; is_vertical) {
+                is_horizontal = false;
+                return true;
+            }
+            return false;
+        }
+    }
+    else {
+        num = num - 90;
+        for (i = 1; i &lt; num_of_ships; i++) {
+            if (player_ships_placed.player2.charAt(num) != ".") { //&lt;-- checks to ensure there isn't already a ship placed there
+                return false;
+            }
+            else if (player_ships_placed.player2.charAt(num - i) == num_of_ships &amp;&amp; is_horizontal) {
+                return true
+            }
+            else if (player_ships_placed.player2.charAt(num + i) == num_of_ships &amp;&amp; is_horizontal) {
+                return true;
+            }
+            else if (player_ships_placed.player2.charAt(num - (i * 10)) == num_of_ships &amp;&amp; is_vertical) {
+                return true;
+            }
+            else if (player_ships_placed.player2.charAt(num + (i * 10)) == num_of_ships &amp;&amp; is_vertical) {
+                return true;
+            }
+            return false;
+        }
+    }
+}
+
+/**
+        * @author Alec Mcglynn
+        * @description checks whether or not the boat has enough space to fit based on the first square
+        * @param {num} - number that corresponds to a number on the board
+        * @return bool 
+        */
+function valid_first_block(num) {
+    let space_up = 0, space_down = 0, space_left = 0, space_right = 0
+    if (is_player_one) {
+        if (player_ships_placed.player1.charAt(num) != ".") { //&lt;-- checks to ensure there isn't already a ship placed there
+            return false;
+        }
+        for (i = 1; i &lt; 10; i++) {
+            if (player_ships_placed.player1.charAt(num - i) == "." &amp;&amp; (num % 10) - i >= 0 &amp;&amp; i - 1 == space_left) {
+                space_left++
+            }
+            if (player_ships_placed.player1.charAt(num + i) == "." &amp;&amp; (num % 10) + i &lt; 10 &amp;&amp; i - 1 == space_right) {
+                space_right++
+            }
+            if (player_ships_placed.player1.charAt(num - (i * 10)) == "." &amp;&amp; i - 1 == space_up) {
+                space_up++
+            }
+            if (player_ships_placed.player1.charAt(num + (i * 10)) == "." &amp;&amp; i - 1 == space_down) {
+                space_down++
+            }
+        }
+    }
+    else {
+        num = num - 90;
+        if (player_ships_placed.player2.charAt(num) != ".") { //&lt;-- checks to ensure there isn't already a ship placed there
+            return false;
+        }
+        for (i = 1; i &lt; 10; i++) {
+            if (player_ships_placed.player2.charAt(num - i) == "." &amp;&amp; (num % 10) - i >= 0 &amp;&amp; i - 1 == space_left) {
+                space_left++
+            }
+            if (player_ships_placed.player2.charAt(num + i) == "." &amp;&amp; (num % 10) + i &lt; 10 &amp;&amp; i - 1 == space_right) {
+                space_right++
+            }
+            if (player_ships_placed.player2.charAt(num - (i * 10)) == "." &amp;&amp; i - 1 == space_up) {
+                space_up++
+            }
+            if (player_ships_placed.player2.charAt(num + (i * 10)) == "." &amp;&amp; i - 1 == space_down) {
+                space_down++
+            }
+        }
+    }
+    if (num_of_ships - 1 &lt;= space_down + space_up || num_of_ships - 1 &lt;= space_left + space_right) {
+        if (num_of_ships - 1 &lt;= space_down + space_up == false) {
+            is_vertical = false
+        }
+        if (num_of_ships - 1 &lt;= space_left + space_right == false) {
+            is_horizontal = false
+        }
+        return true
+    }
+}
+
+/**
+        * @author Sam Jerguson
+        * @param {num} - number that corresponds to a number on the board
+        * @return bool
+        * @description checks if ship is already placed on a square
+        */
+function first_turn_already_a_ship_there(num) {
+    if (is_player_one) {
+        if (player_ships_placed.player1.charAt(num) != ".")
+            return true;
+        else
+            return false;
+    }
+    else {
+        num = num - 90;
+        if (player_ships_placed.player2.charAt(num) != ".")
+            return true;
+        else
+            return false;
+    }
+
+}
+
+/**
+        * @author Ben Moeller
+        * @return {void}
+        * @description function to reset the bools when swapping to another ship
+        */
+function reset_bools() {
+    first_button = true;
+    is_vertical = true;
+    is_horizontal = true;
+    boat_first_click = true;
+}
+
+/**
+        * @author Ben Moeller
+        * @return {void}
+        * @description helper function to help print out instructions to the board
+        */
+function print_boat_sel_inst() {
+    context.fillText("Please select the blocks where you want", 635, 75);
+    context.fillText("the first ship of size=" + num_of_ships + " block", 680, 100);
+    if (is_player_one) {
+        context.fillText("&lt;------------------------------------------------", 655, 125);
+    }
+    else {
+        context.fillText("------------------------------------------------->", 655, 125);
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#ask_more_ships">ask_more_ships</a></li><li><a href="global.html#boat_check_valid_move">boat_check_valid_move</a></li><li><a href="global.html#boat_sel_click">boat_sel_click</a></li><li><a href="global.html#buffer">buffer</a></li><li><a href="global.html#check_game_over_player_1">check_game_over_player_1</a></li><li><a href="global.html#check_game_over_player_2">check_game_over_player_2</a></li><li><a href="global.html#checkFlip">checkFlip</a></li><li><a href="global.html#checkHit">checkHit</a></li><li><a href="global.html#checkSunk">checkSunk</a></li><li><a href="global.html#checkSunkHelper">checkSunkHelper</a></li><li><a href="global.html#draw">draw</a></li><li><a href="global.html#fillSquaresPlayer1">fillSquaresPlayer1</a></li><li><a href="global.html#fillSquaresPlayer2">fillSquaresPlayer2</a></li><li><a href="global.html#first_turn_already_a_ship_there">first_turn_already_a_ship_there</a></li><li><a href="global.html#place_ships">place_ships</a></li><li><a href="global.html#print_board">print_board</a></li><li><a href="global.html#print_board2">print_board2</a></li><li><a href="global.html#print_boat_sel_inst">print_boat_sel_inst</a></li><li><a href="global.html#reset_bools">reset_bools</a></li><li><a href="global.html#showPlayer1board">showPlayer1board</a></li><li><a href="global.html#showPlayer1ships">showPlayer1ships</a></li><li><a href="global.html#showPlayer2board">showPlayer2board</a></li><li><a href="global.html#showPlayer2Ships">showPlayer2Ships</a></li><li><a href="global.html#start_combat">start_combat</a></li><li><a href="global.html#store_ship">store_ship</a></li><li><a href="global.html#valid_first_block">valid_first_block</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Sep 19 2021 18:41:34 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
