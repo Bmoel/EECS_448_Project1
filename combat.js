@@ -56,7 +56,7 @@ function checkFlip () {
     print_board2()
     if(!in_buffer && click == false) {
         if(player_2_turn){
-            if(this.id <= 79){
+            if(this.id <= 89){
                 if(player1array[this.id] == 'ship'){
 
                     player1array[this.id] = 'hit'
@@ -108,14 +108,14 @@ function checkFlip () {
                 click = true
             }
             else{
-                    context.clearRect(600, 100, 100, 100)
+                    //context.clearRect(600, 100, 100, 100)
                     context.fillText("You can only interact with", 695, 150);
                     context.fillText("  your own board", 725, 175);
                     console.log("here3")
                 }
             }
         else if(player_1_turn){
-            if(this.id >= 79){
+            if(this.id >= 89){
                 if(player2array[this.id - 90] == 'ship'){
 
                     player2array[this.id-90] = 'hit'
@@ -180,8 +180,8 @@ function checkFlip () {
     else if (in_buffer){
         console.log("in buffer can't click")
         context.clearRect(600, 100, 100, 100)
-        context.fillText("You are in buffer phase ", 695, 150);
-        context.fillText("click leave buffer to begin turn", 660, 175);
+        context.fillText("You are in buffer phase ", 705, 150);
+        context.fillText("click the button to begin turn", 680, 175);
     }
     else {
         context.clearRect(600, 100, 100, 100)
@@ -236,7 +236,7 @@ function showPlayer1board() {
         * but showing all hits, misses, unhit ships and sunken ships
         */
 function showPlayer1ships() {
-    context.fillText("Player 1's ships",245,580);
+    context.fillText("Your ships",245,580);
     player_1_turn = true
     console.log("in player 1 ships")
     for (let i = 0; i<90; i++) {
@@ -275,7 +275,7 @@ function showPlayer1ships() {
     combat_turn++
 
     player_two_turn_button = document.createElement("player_two_turn_button");
-    player_two_turn_button.innerHTML = "Click Here To Swap To Player 2";
+    player_two_turn_button.innerHTML = "Click Here To Swap To Player 2 After firing shot";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(player_two_turn_button);
 
@@ -295,7 +295,7 @@ function showPlayer1ships() {
         * player2array showing hits, misses, but hiding where the unhit ships are
         */
 function showPlayer2board() {
-    context.fillText("Player 2's ships",1225,580);
+    context.fillText("Your ships",1260,580);
     console.log("player 2 board")
     for (let i = 0; i<90; i++) {
         if(player1array[i] == 'hit'){
@@ -426,9 +426,11 @@ function buffer() {
                 showPlayer2board()
             }
             if(player_1_turn) {
+                context.font = "Bold 12pt Candara";
                 context.fillText("Player 1",760,50);
             }
             else {
+                context.font = "Bold 12pt Candara";
                 context.fillText("Player 2",760,50);
             }
             body.removeChild(leave_buffer_button)
