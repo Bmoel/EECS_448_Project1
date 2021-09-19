@@ -324,8 +324,10 @@ function valid_first_block(num) {
 }
 
 /**
-        * @author
-        * @version 
+        * @author Sam Jerguson
+        * @param {num}
+        * @return {bool} 
+        * @desc Checks whether there is already a ship on the first square clicked
         */
 function first_turn_already_a_ship_there(num) {
     if (is_player_one) {
