@@ -18,7 +18,12 @@ let player_ships_placed = {
     player2: "..........................................................................................",
 }
 
-//Click function that runs when there is a click on the boards
+/**
+        * @author Ben Moeller
+        * @version 2
+        * @see game.js to see original declaration
+        * function that activates whenever there is a click on the board
+        */
 function boat_sel_click() {
     console.log(this);
     if (in_boat_selcection) {
@@ -63,7 +68,6 @@ function boat_sel_click() {
         }
         else if (ship_inc > num_of_ships) {
             context.fillText("Max number of blocks placed", 675, 475);
-            context.fillText("Plese select yes or no", 710, 500);
         }
         else if (boat_check_valid_move(parseInt(this.id)) == false) {
             if (first_turn_already_a_ship_there(parseInt(this.id))) {
@@ -71,7 +75,7 @@ function boat_sel_click() {
             }
             else {
                 context.fillText("Please selects blocks to create", 675, 600);
-                context.fillText("a 1x" + num_of_ships + " ship", 755, 625);
+                context.fillText("a valid 1x" + num_of_ships + " ship", 735, 625);
             }
         }
 
@@ -98,7 +102,12 @@ function boat_sel_click() {
     }
 }
 
-//Helps give instructions for where and how many blocks long ships are
+/**
+        * @author Ben Moeller
+        * @version 2
+        * function that helps the game reset the bools and increments
+        * counters for each ship number that is currently being placed
+        */
 function place_ships() {
     if (num_of_ships == 1) {
         reset_bools();
@@ -132,7 +141,12 @@ function place_ships() {
     }
 }
 
-//Function that helps make the yes and no buttons, along with what to do when clicking yes and no
+/**
+        * @author Ben Moeller
+        * @version 2
+        * function that helps make the yes button, 
+        * along with what to do when clicking yes
+        */
 function ask_more_ships() {
     first_button = false;
     yes_button = document.createElement("yes_button");
@@ -142,9 +156,6 @@ function ask_more_ships() {
     
     yes_button.addEventListener("click", () => {
         body.removeChild(yes_button);
-        // if (is_player_one) {
-        //     body.removeChild(no_button);
-        // }
         num_of_ships++;
         more_ships = true;
         if (num_of_ships == max_ships+1 && is_player_one) {
@@ -174,8 +185,12 @@ function ask_more_ships() {
     })
 }
 
-//Function that stores the ships in the player strings, as well as calls checkHit
-//in order to store data in a separate array (checkHit() is in game.js)
+/**
+        * @author Ben Moeller
+        * @version 2
+        * function that stores the ships in the player strings, as well as calls checkHit
+        * in order to store data in a separate array (checkHit() is in game.js)
+        */
 function store_ship(num) {
     if (is_player_one) {
         player_ships_placed.player1 =
@@ -195,7 +210,12 @@ function store_ship(num) {
     }
 }
 
-//Checks if the block being placed is a valid move for the current boat
+/**
+        * @author Ben Moeller
+        * @version 2
+        * function that checks if the block being placed is a valid 
+        * move for the current boat
+        */
 function boat_check_valid_move(num) {
     if (is_player_one) {
         for (i = 1; i < num_of_ships; i++) {
@@ -244,6 +264,10 @@ function boat_check_valid_move(num) {
     }
 }
 
+/**
+        * @author 
+        * @version
+        */
 function valid_first_block(num) {
     let space_up = 0, space_down = 0, space_left = 0, space_right = 0
     if (is_player_one) {
@@ -296,6 +320,10 @@ function valid_first_block(num) {
     }
 }
 
+/**
+        * @author
+        * @version 
+        */
 function first_turn_already_a_ship_there(num) {
     if (is_player_one) {
         if (player_ships_placed.player1.charAt(num) != ".")
@@ -313,7 +341,11 @@ function first_turn_already_a_ship_there(num) {
     
 }
 
-//helper function to reset the bools when swapping to another ship
+/**
+        * @author Ben Moeller
+        * @version 2
+        * helper function to reset the bools when swapping to another ship
+        */
 function reset_bools() {
     first_button = true;
     is_vertical = true;
@@ -321,7 +353,11 @@ function reset_bools() {
     boat_first_click = true;
 }
 
-//helper function to help print out instructions to the board
+/**
+        * @author Ben Moeller
+        * @version 2
+        * helper function to help print out instructions to the board
+        */
 function print_boat_sel_inst() {
     context.fillText("Please select the blocks where you want", 635, 75);
     context.fillText("the first ship of size=" + num_of_ships + " block", 680, 100);

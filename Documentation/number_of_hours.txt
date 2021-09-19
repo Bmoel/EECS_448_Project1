@@ -17,3 +17,19 @@ Future projects will likely have more accurate estimates
 Hours tracking
 Alec
     9/16 5:30 - 7:40
+
+Ben Moeller
+    9/6 - Group Meeting: 20 min
+    9/7 - TA meeting: 20 min
+    9/8 - Adding initial files: 1.5 hrs
+    9/9 - Fixed css and html plus added functions to game.js: 1 hr
+    9/10 - Added more files for modularity: 2 hrs
+    9/11 - Added functionality to boat_selection.js: 30hrs
+    9/12 - Lab 3 Meeting: 45 minutes
+    9/13 - Worked on boat_selection.js: 45 min
+    9/14 - Worked on boat selection plus group meetin: 4 hrs
+    9/15 - Continued work on boat_selection.js: 3 hrs
+    9/16 - Edited various parts of code: 2 hrs
+    9/17 - changed boat_selection.js to be in line with changes: 1 hr
+    9/18 - Searched and fixed various bugs - 2 hrs
+    9/19 - Bug fixes and documentation - 

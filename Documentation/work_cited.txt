@@ -1,17 +1,20 @@
 Document for listing any outside work referenced
 
-9/9/2021 - https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window
+9/9/2021 Ben Moeller- https://stackoverflow.com/questions/1664785/resize-html5-canvas-to-fit-window
 Learned from this webpage in order to scale the size of the html canvas with respect to the user's window size
 Changes in styles.css (Lines 1 - 5) and game.js (Lines 48-49)
 
-9/10 - https://stackoverflow.com/questions/11996257/the-character-encoding-of-the-html-document-was-not-declared
+9/10 Ben Moeller- https://stackoverflow.com/questions/11996257/the-character-encoding-of-the-html-document-was-not-declared
 Had some trouble with the encoding of the html file, this linked helped fix the issue
 Changes in index.html (Lines 3-4)
 
-9/14 - https://www.hongkiat.com/blog/moving-css-grid-items/
+9/14 Ben Moeller- https://www.hongkiat.com/blog/moving-css-grid-items/
 When placing the second board, had some issues with getting the board to be on the right hand side. This article helped us find margin-left and margin-top for the css file
 Changes in styles.css (Lines 30-31)
 
-9/18 - https://sebhastian.com/javascript-console-input/
+9/18 Ben Moeller- https://sebhastian.com/javascript-console-input/
 Learned how to get input in JavaScript via the prompt function taught at this website
 Added line 5 in game.js
+
+9/19 Ben Moeller- https://www.valentinog.com/blog/jsdoc/
+Used this article to help learn how to use JSdocs
