@@ -36,7 +36,7 @@ const player2array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
                         40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,
                         60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89]
 
-//updates player array when a click event happens NOTE: will eventually be used to print to the screen where hits/misses/empty spaces are
+
 function checkHit (squareToCheck, isPlayerOne) {
         turn++;
         if(isPlayerOne){
@@ -51,6 +51,7 @@ function checkHit (squareToCheck, isPlayerOne) {
         }
 }
 
+
 function fillSquaresPlayer1 () {
     for (let i = 0; i < 90; i++){
         var image = document.createElement('img')
@@ -59,6 +60,7 @@ function fillSquaresPlayer1 () {
         document.getElementById(i).appendChild(image)
     }
 }
+
 
 function fillSquaresPlayer2 () {
     for (let i = 90; i < 180; i++){
@@ -69,7 +71,11 @@ function fillSquaresPlayer2 () {
     }
 }
 
-//Draws that current animation frame in according to what it tells to print
+/**
+        * @author Ben Moeller
+        * @return {void}
+        * Draws that current messages in according to what it tells to print
+        */
 function draw() {
     context.canvas.width = window.innerWidth;
     context.canvas.height = window.innerHeight;
@@ -83,17 +89,13 @@ function draw() {
             place_ships(); //function in boat_selection.js
         }
     }
-    else if(in_combat) { //if game is in the combat phase
-        if(is_player_one) {
-            
-        }
-        else {
-
-        }
-    }
 }
 
-//Function to help print letters and numbers the the board
+/**
+        * @author Ben Moeller
+        * @return {void}
+        * Function to help print letters and numbers the the board
+        */
 function print_board() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
     context.font = "Bold 12pt Candara";

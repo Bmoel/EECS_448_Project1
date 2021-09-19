@@ -109,9 +109,9 @@ function checkFlip() {
                 document.getElementById(this.id).removeEventListener("click", checkFlip)
             }
             else {
-                //context.clearRect(600, 100, 100, 100)
+                context.clearRect(600, 100, 100, 100)
                 context.fillText("You can only interact with", 695, 150);
-                context.fillText("  your own board", 725, 175);
+                context.fillText("the opposing board", 725, 175);
                 console.log("here3")
             }
         }
@@ -173,7 +173,7 @@ function checkFlip() {
             else {
                 context.clearRect(600, 100, 100, 100)
                 context.fillText("You can only interact with", 695, 150);
-                context.fillText("  your own board", 725, 175);
+                context.fillText("the opposing board", 725, 175);
                 console.log("here7")
                 console.log(click)
             }
