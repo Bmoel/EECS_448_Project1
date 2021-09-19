@@ -5,8 +5,7 @@ let is_player_one = true; //bool to track current player
 /**
         * @author blake richmeier
         * @version 2
-        * checks for dom content and then prompts to ask how many ships should be played with
-        * creates canvas and creates the board
+        * @description checks for dom content and then prompts to ask how many ships should be played with creates canvas and creates the board
         */
 document.addEventListener('DOMContentLoaded', () => {
     max_ships = prompt("Welcome to Battleship, how many ships do you want to allow?");
@@ -44,8 +43,7 @@ const player2array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
 /**
         * @author blake richmeier
         * @version 2
-        * updates player array when a click event happens
-        * used to print to the screen where hits/misses/empty spaces are
+        * @description updates player array when a click event happens used to print to the screen where hits/misses/empty spaces are
         */
 function checkHit (squareToCheck, isPlayerOne) {
         turn++;
@@ -64,7 +62,7 @@ function checkHit (squareToCheck, isPlayerOne) {
 /**
         * @author blake richmeier
         * @version 1
-        * creates blank board for players to interact with for player 1
+        * @description creates blank board for players to interact with for player 1
         */
 function fillSquaresPlayer1 () {
     for (let i = 0; i < 90; i++){
@@ -111,8 +109,8 @@ function draw() {
 
 /**
         * @author Ben Moeller
-        * @version 2
-        * Function to help print letters and numbers tO the board
+        * @return {bool}
+        * @description Function to help print letters and numbers tO the board
         */
 function print_board() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
@@ -139,9 +137,8 @@ function print_board() {
 
 /**
         * @author Ben Moeller
-        * @version 2
-        * Function to help print letters and numbers tO the board, needed second
-        * function for combat phase
+        * @return {void}
+        * @description Function to help print letters and numbers tO the board, needed second function for combat phase
         */
 function print_board2() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
@@ -174,12 +171,6 @@ var Ship = function(name, location) {
     };
 };
 
-/**
-        * @author Ben Moeller
-        * @version 2
-        * Function to help print letters and numbers tO the board, needed second
-        * function for combat phase
-        */
 var sunk  = function(){
 
   //check ship is sunk//
