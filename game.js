@@ -44,7 +44,7 @@ const player2array = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,
 /**
         * @author blake richmeier
         * @version 2
-        * updates player array when a click event happens 
+        * updates player array when a click event happens
         * used to print to the screen where hits/misses/empty spaces are
         */
 function checkHit (squareToCheck, isPlayerOne) {
@@ -102,17 +102,9 @@ function draw() {
     if (in_boat_selcection) { //if game is in the selection phase
         if(is_player_one) {
             place_ships(); //function in boat_selection.js
-        } 
+        }
         else {
             place_ships(); //function in boat_selection.js
-        }
-    }
-    else if(in_combat) { //if game is in the combat phase
-        if(is_player_one) {
-            
-        }
-        else {
-
         }
     }
 }
@@ -148,13 +140,13 @@ function print_board() {
 /**
         * @author Ben Moeller
         * @version 2
-        * Function to help print letters and numbers tO the board, needed second 
+        * Function to help print letters and numbers tO the board, needed second
         * function for combat phase
         */
 function print_board2() {
     let alph = ['A','B','C','D','E','F','G','H','I','J'];
     context.font = "Bold 12pt Candara";
-    
+
     context.font = "15pt Candara";
     for(let i = 1; i <= 9; i++) {
         context.fillText(i,8,56*(i));
@@ -185,11 +177,11 @@ var Ship = function(name, location) {
 /**
         * @author Ben Moeller
         * @version 2
-        * Function to help print letters and numbers tO the board, needed second 
+        * Function to help print letters and numbers tO the board, needed second
         * function for combat phase
         */
 var sunk  = function(){
- 
+
   //check ship is sunk//
    var ship1 = ship1.checkSunk();
    var ship2 = ship2.checkSunk();

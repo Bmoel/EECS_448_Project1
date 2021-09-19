@@ -32,7 +32,12 @@ Ben Moeller
     9/16 - Edited various parts of code: 2 hrs
     9/17 - changed boat_selection.js to be in line with changes: 1 hr
     9/18 - Searched and fixed various bugs - 2 hrs
-    9/19 - Bug fixes and documentation - 
+    9/19 - Bug fixes and documentation -
+
+Sam Jerguson
+    9/14 - 3 hrs
+    9/15 - 2 hrs 15 mins
+    9/18 - 1 hr
 
 Blake Richmeier
     9/6 - Group Meeting: 20 min
@@ -45,4 +50,4 @@ Blake Richmeier
     9/14 - combat bug fixes: 4 hrs
     9/16 - combat bug fixes: 2 hrs
     9/18 - added final features to combat.js: 4 hrs
-    9/19 - finished documentation: 2 hours 
+    9/19 - finished documentation: 2 hours

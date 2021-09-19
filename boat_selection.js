@@ -20,8 +20,8 @@ let player_ships_placed = {
 
 /**
         * @author Ben Moeller
-        * @version 2
         * @see game.js to see original declaration
+        * @return {void}
         * function that activates whenever there is a click on the board
         */
 function boat_sel_click() {
@@ -104,7 +104,7 @@ function boat_sel_click() {
 
 /**
         * @author Ben Moeller
-        * @version 2
+        * @return {void}
         * function that helps the game reset the bools and increments
         * counters for each ship number that is currently being placed
         */
@@ -144,6 +144,7 @@ function place_ships() {
 /**
         * @author Ben Moeller
         * @version 2
+        * @return {void}
         * function that helps make the yes button, 
         * along with what to do when clicking yes
         */
@@ -187,7 +188,8 @@ function ask_more_ships() {
 
 /**
         * @author Ben Moeller
-        * @version 2
+        * @param {num} - number that corresponds to a block in the board
+        * @return {void}
         * function that stores the ships in the player strings, as well as calls checkHit
         * in order to store data in a separate array (checkHit() is in game.js)
         */
@@ -212,7 +214,8 @@ function store_ship(num) {
 
 /**
         * @author Ben Moeller
-        * @version 2
+        * @param {num} - number that corresponds to a number on the board
+        * @return {bool}
         * function that checks if the block being placed is a valid 
         * move for the current boat
         */
@@ -343,7 +346,7 @@ function first_turn_already_a_ship_there(num) {
 
 /**
         * @author Ben Moeller
-        * @version 2
+        * @return {void}
         * helper function to reset the bools when swapping to another ship
         */
 function reset_bools() {
@@ -355,7 +358,7 @@ function reset_bools() {
 
 /**
         * @author Ben Moeller
-        * @version 2
+        * @return {void}
         * helper function to help print out instructions to the board
         */
 function print_boat_sel_inst() {
