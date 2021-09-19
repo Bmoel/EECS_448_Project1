@@ -22,7 +22,7 @@ let player_ships_placed = {
         * @author Ben Moeller
         * @see game.js to see original declaration
         * @return {void}
-        * function that activates whenever there is a click on the board
+        * @description function that activates whenever there is a click on the board
         */
 function boat_sel_click() {
     console.log(this);
@@ -105,8 +105,7 @@ function boat_sel_click() {
 /**
         * @author Ben Moeller
         * @return {void}
-        * function that helps the game reset the bools and increments
-        * counters for each ship number that is currently being placed
+        * @description function that helps the game reset the bools and increments counters for each ship number that is currently being placed
         */
 function place_ships() {
     if (num_of_ships == 1) {
@@ -145,8 +144,7 @@ function place_ships() {
         * @author Ben Moeller
         * @version 2
         * @return {void}
-        * function that helps make the yes button, 
-        * along with what to do when clicking yes
+        * @description function that helps make the yes button, along with what to do when clicking yes
         */
 function ask_more_ships() {
     first_button = false;
@@ -190,8 +188,7 @@ function ask_more_ships() {
         * @author Ben Moeller
         * @param {num} - number that corresponds to a block in the board
         * @return {void}
-        * function that stores the ships in the player strings, as well as calls checkHit
-        * in order to store data in a separate array (checkHit() is in game.js)
+        * @description function that stores the ships in the player strings, as well as calls checkHit in order to store data in a separate array (checkHit() is in game.js)
         */
 function store_ship(num) {
     if (is_player_one) {
@@ -216,8 +213,7 @@ function store_ship(num) {
         * @author Ben Moeller
         * @param {num} - number that corresponds to a number on the board
         * @return {bool}
-        * function that checks if the block being placed is a valid 
-        * move for the current boat
+        * @description function that checks if the block being placed is a valid move for the current boat
         */
 function boat_check_valid_move(num) {
     if (is_player_one) {
@@ -267,10 +263,6 @@ function boat_check_valid_move(num) {
     }
 }
 
-/**
-        * @author 
-        * @version
-        */
 function valid_first_block(num) {
     let space_up = 0, space_down = 0, space_left = 0, space_right = 0
     if (is_player_one) {
@@ -349,7 +341,7 @@ function first_turn_already_a_ship_there(num) {
 /**
         * @author Ben Moeller
         * @return {void}
-        * helper function to reset the bools when swapping to another ship
+        * @description helper function to reset the bools when swapping to another ship
         */
 function reset_bools() {
     first_button = true;
@@ -361,7 +353,7 @@ function reset_bools() {
 /**
         * @author Ben Moeller
         * @return {void}
-        * helper function to help print out instructions to the board
+        * @description helper function to help print out instructions to the board
         */
 function print_boat_sel_inst() {
     context.fillText("Please select the blocks where you want", 635, 75);
