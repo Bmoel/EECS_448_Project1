@@ -115,7 +115,7 @@ function checkFlip() {
             }
         }
         else if (player_1_turn) {
-            if (this.id >= 89) {
+            if (this.id > 89) {
                 if (player2array[this.id - 90] == 'ship') {
 
                     player2array[this.id - 90] = 'hit'
@@ -301,8 +301,8 @@ function showPlayer1ships() {
 
     player_two_turn_button.addEventListener("click", () => {
         if (click) {
-            buffer()
             player_1_turn = false
+            buffer()
             body.removeChild(player_two_turn_button)
         }
     })
@@ -408,13 +408,14 @@ function showPlayer2Ships() {
     combat_turn++
 
     player_one_turn_button = document.createElement("player_one_turn_button");
-    player_one_turn_button.innerHTML = "Click Here To Swap to Player One";
+    player_one_turn_button.innerHTML = "Click Here To Swap to Player One After Firing Shot";
     body = document.getElementsByTagName("body")[0];
     body.appendChild(player_one_turn_button);
 
     player_one_turn_button.addEventListener("click", () => {
-        player_2_turn = false
+        console.log("code freeze")
         if (click) {
+            player_2_turn = false
             buffer()
             body.removeChild(player_one_turn_button)
         }
