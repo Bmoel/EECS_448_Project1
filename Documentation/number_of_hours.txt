@@ -14,7 +14,8 @@ So for example if we thought that each person would need to spend eight hours on
 Overall since this is our first project, we are ultimately just making an educated guess
 Future projects will likely have more accurate estimates
 
-Hours tracking
+Hours tracking:
+
 Alec
     9/6 group meeting 20 min
     9/12 45 min
@@ -31,12 +32,12 @@ Ben Moeller
     9/11 - Added functionality to boat_selection.js: 30hrs
     9/12 - Lab 3 Meeting: 45 minutes
     9/13 - Worked on boat_selection.js: 45 min
-    9/14 - Worked on boat selection plus group meetin: 4 hrs
+    9/14 - Worked on boat selection plus group meeting: 4 hrs
     9/15 - Continued work on boat_selection.js: 3 hrs
     9/16 - Edited various parts of code: 2 hrs
     9/17 - changed boat_selection.js to be in line with changes: 1 hr
-    9/18 - Searched and fixed various bugs - 2 hrs
-    9/19 - Bug fixes and documentation -
+    9/18 - Searched and fixed various bugs: 2 hrs
+    9/19 - Bug fixes and documentation: 2hrs
 
 Sam Jerguson
     9/14 - 3 hrs
@@ -55,3 +56,15 @@ Blake Richmeier
     9/16 - combat bug fixes: 2 hrs
     9/18 - added final features to combat.js: 4 hrs
     9/19 - finished documentation: 2 hours
+
+Jiayi Fu
+    9/6 - meeting: 20 min
+    9/7 - TA meeting: 20 min
+    9/8 - worked on game.hs: 1 hr
+    9/12 - lab3 meeting: 45 minutes
+    9/13 - worked more on game.js: 1hr
+
+Total Amount of Hours: About 60 hours
+
+Got this total by adding up all of the hours that we recorded. This was significantly higher then what we initially thought it would take, 
+which is likely due to the selection and combat phases of the project taking longer than we thought.

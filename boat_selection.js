@@ -67,7 +67,10 @@ function boat_sel_click() {
         } else if (ship_inc > num_of_ships) {
             context.fillText("Max number of blocks placed", 675, 475);
         } else if (boat_check_valid_move(parseInt(this.id)) == false) {
-            if (first_turn_already_a_ship_there(parseInt(this.id))) {
+            if (parseInt(this.id) > 89 && is_player_one) {
+                context.fillText("Wrong board!", 735, 575);
+            }
+            else if (first_turn_already_a_ship_there(parseInt(this.id))) {
                 context.fillText("Already a ship there!", 709, 550);
             } else {
                 context.fillText("Please selects blocks to create", 675, 600);
