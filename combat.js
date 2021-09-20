@@ -109,6 +109,14 @@ function checkFlip() {
             }
             else {
                 context.clearRect(600, 100, 100, 100)
+                if(player_1_turn) {
+                    context.fillText("Player 1",760,50);
+                }
+                else {
+                    context.fillText("Player 2",760,50);
+                }
+                context.fillText("Your ships", 1260, 580);
+                context.fillText("Guess Opposing ship here", 215, 580);
                 context.fillText("You can only interact with", 695, 150);
                 context.fillText("the opposing board", 725, 175);
                 console.log("here3")
@@ -171,6 +179,14 @@ function checkFlip() {
             }
             else {
                 context.clearRect(600, 100, 100, 100)
+                if(player_1_turn) {
+                    context.fillText("Player 1",760,50);
+                }
+                else {
+                    context.fillText("Player 2",760,50);
+                }
+                context.fillText("Your ships", 245, 580);
+                context.fillText("Guess Opposing ship here", 1225, 580);
                 context.fillText("You can only interact with", 695, 150);
                 context.fillText("the opposing board", 725, 175);
                 console.log("here7")
@@ -463,11 +479,9 @@ function buffer() {
                 showPlayer2board()
             }
             if (player_1_turn) {
-                context.font = "Bold 12pt Candara";
                 context.fillText("Player 1", 760, 50);
             }
             else {
-                context.font = "Bold 12pt Candara";
                 context.fillText("Player 2", 760, 50);
             }
             body.removeChild(leave_buffer_button)
