@@ -25,10 +25,10 @@ let p2_5 = []
 let p2_6 = []
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * the first function called by boat_selection.js to start the combat phase
-        */
+ * @author blake richmeier
+ * @version 2
+ * the first function called by boat_selection.js to start the combat phase
+ */
 function start_combat() {
     context.clearRect(0, 0, canvas.width, canvas.height)
     print_board2()
@@ -41,15 +41,15 @@ function start_combat() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 10
-        * this function will check if the player's array has a ship or a blank
-        * space at a given index and append a picture to the div depending
-        * it has an iterator for checking what player's turn it is and also had to add a function that
-        * pushes a char 'a' onto an array whenever there is a hit on a certain length ship that is used for checking
-        * if a ship is sunk also has guards for misplaced clicks
-        * @return after a click event on leave_player2_button it will call buffer()
-        */
+ * @author blake richmeier
+ * @version 10
+ * this function will check if the player's array has a ship or a blank
+ * space at a given index and append a picture to the div depending
+ * it has an iterator for checking what player's turn it is and also had to add a function that
+ * pushes a char 'a' onto an array whenever there is a hit on a certain length ship that is used for checking
+ * if a ship is sunk also has guards for misplaced clicks
+ * @return after a click event on leave_player2_button it will call buffer()
+ */
 function checkFlip() {
     context.clearRect(0, 0, canvas.width, canvas.height)
     print_board2()
@@ -63,24 +63,19 @@ function checkFlip() {
                     if (player_ships_placed.player1.charAt(parseInt(this.id)) == 1) {
                         p1_1 = p1_1 + 'a'
                         console.log(p1_1)
-                    }
-                    else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 2) {
+                    } else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 2) {
                         p1_2 = p1_2 + 'a'
                         console.log(p1_2)
-                    }
-                    else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 3) {
+                    } else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 3) {
                         p1_3 = p1_3 + 'a'
                         console.log(p1_3)
-                    }
-                    else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 4) {
+                    } else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 4) {
                         p1_4 = p1_4 + 'a'
                         console.log(p1_4)
-                    }
-                    else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 5){
+                    } else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 5) {
                         p1_5 = p1_5 + 'a'
                         console.log("p1_6", p1_5)
-                    }
-                    else if(player_ships_placed.player1.charAt(parseInt(this.id)) == 6){
+                    } else if (player_ships_placed.player1.charAt(parseInt(this.id)) == 6) {
                         p1_6 = p1_6 + 'a'
                         console.log("p1_6", p1_6)
                     }
@@ -90,14 +85,12 @@ function checkFlip() {
                     document.getElementById(this.id).innerHTML = ''
                     document.getElementById(this.id).appendChild(image)
                     console.log("here1")
-                }
-                else if (player1array[this.id] == 'sunk') {
+                } else if (player1array[this.id] == 'sunk') {
                     var image = document.createElement('img')
                     image.src = 'images/sunken.png'
                     document.getElementById(this.id).innerHTML = ''
                     document.getElementById(this.id).appendChild(image)
-                }
-                else {
+                } else {
                     player1array[this.id] = 'miss'
                     var image = document.createElement('img')
                     image.src = 'images/water.png'
@@ -106,14 +99,12 @@ function checkFlip() {
                 }
                 click = true
                 document.getElementById(this.id).removeEventListener("click", checkFlip)
-            }
-            else {
+            } else {
                 context.clearRect(600, 100, 100, 100)
-                if(player_1_turn) {
-                    context.fillText("Player 1",760,50);
-                }
-                else {
-                    context.fillText("Player 2",760,50);
+                if (player_1_turn) {
+                    context.fillText("Player 1", 760, 50);
+                } else {
+                    context.fillText("Player 2", 760, 50);
                 }
                 context.fillText("Your ships", 1260, 580);
                 context.fillText("Guess Opposing ship here", 215, 580);
@@ -121,8 +112,7 @@ function checkFlip() {
                 context.fillText("the opposing board", 725, 175);
                 console.log("here3")
             }
-        }
-        else if (player_1_turn) {
+        } else if (player_1_turn) {
             if (this.id > 89) {
                 if (player2array[this.id - 90] == 'ship') {
 
@@ -131,24 +121,19 @@ function checkFlip() {
                     if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 1) {
                         p2_1 = p2_1 + 'a'
                         console.log(p2_1)
-                    }
-                    else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 2) {
+                    } else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 2) {
                         p2_2 = p2_2 + 'a'
                         console.log(p2_2)
-                    }
-                    else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 3) {
+                    } else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 3) {
                         p2_3 = p2_3 + 'a'
                         console.log(p2_3)
-                    }
-                    else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 4) {
+                    } else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 4) {
                         p2_4 = p2_4 + 'a'
                         console.log(p2_4)
-                    }
-                    else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 5){
+                    } else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 5) {
                         p2_5 = p2_5 + 'a'
                         console.log(p2_5)
-                    }
-                    else if(player_ships_placed.player2.charAt(parseInt(this.id)-90) == 6){
+                    } else if (player_ships_placed.player2.charAt(parseInt(this.id) - 90) == 6) {
                         p2_6 = p2_6 + 'a'
                         console.log(p2_6)
                     }
@@ -158,15 +143,13 @@ function checkFlip() {
                     document.getElementById(this.id).innerHTML = ''
                     document.getElementById(this.id).appendChild(image)
                     console.log("here4")
-                }
-                else if (player2array[this.id - 90] == 'sunk') {
+                } else if (player2array[this.id - 90] == 'sunk') {
                     var image = document.createElement('img')
                     image.src = 'images/sunken.png'
                     document.getElementById(this.id).innerHTML = ''
                     document.getElementById(this.id).appendChild(image)
                     console.log("here5")
-                }
-                else {
+                } else {
                     player2array[this.id - 90] = 'miss'
                     var image = document.createElement('img')
                     image.src = 'images/water.png'
@@ -175,15 +158,13 @@ function checkFlip() {
                     console.log("here5")
                 }
                 click = true
-                document.getElementById(this.id).removeEventListener("click",  checkFlip)
-            }
-            else {
+                document.getElementById(this.id).removeEventListener("click", checkFlip)
+            } else {
                 context.clearRect(600, 100, 100, 100)
-                if(player_1_turn) {
-                    context.fillText("Player 1",760,50);
-                }
-                else {
-                    context.fillText("Player 2",760,50);
+                if (player_1_turn) {
+                    context.fillText("Player 1", 760, 50);
+                } else {
+                    context.fillText("Player 2", 760, 50);
                 }
                 context.fillText("Your ships", 245, 580);
                 context.fillText("Guess Opposing ship here", 1225, 580);
@@ -193,14 +174,12 @@ function checkFlip() {
                 console.log(click)
             }
         }
-    }
-    else if (in_buffer) {
+    } else if (in_buffer) {
         console.log("in buffer can't click")
         context.clearRect(600, 100, 100, 100)
         context.fillText("You are in buffer phase ", 705, 150);
         context.fillText("click the button to begin turn", 680, 175);
-    }
-    else {
+    } else {
         context.clearRect(600, 100, 100, 100)
         context.fillText("You can only click 1 ", 715, 150);
         context.fillText("square per turn", 725, 175);
@@ -211,11 +190,11 @@ function checkFlip() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * when called this board will replace the buffer board with a board printing
-        * player1array showing hits, misses, but hiding where the unhit ships are
-        */
+ * @author blake richmeier
+ * @version 2
+ * when called this board will replace the buffer board with a board printing
+ * player1array showing hits, misses, but hiding where the unhit ships are
+ */
 function showPlayer1board() {
     context.fillText("Guess Opposing ship here", 1225, 580);
     for (let i = 0; i < 90; i++) {
@@ -224,20 +203,17 @@ function showPlayer1board() {
             image.src = 'images/fire.png'
             document.getElementById(i + 90).innerHTML = ''
             document.getElementById(i + 90).appendChild(image)
-        }
-        else if (player2array[i] == 'miss') {
+        } else if (player2array[i] == 'miss') {
             var image = document.createElement('img')
             image.src = 'images/water.png'
             document.getElementById(i + 90).innerHTML = ''
             document.getElementById(i + 90).appendChild(image)
-        }
-        else if (player2array[i] == 'sunk') {
+        } else if (player2array[i] == 'sunk') {
             var image = document.createElement('img')
             image.src = 'images/sunken.png'
             document.getElementById(i + 90).innerHTML = ''
             document.getElementById(i + 90).appendChild(image)
-        }
-        else {
+        } else {
             var image = document.createElement('img')
             image.src = 'images/team10.png'
             document.getElementById(i + 90).innerHTML = ''
@@ -247,11 +223,11 @@ function showPlayer1board() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * when called this board will replace the buffer board with a board printing player1array,
-        * but showing all hits, misses, unhit ships and sunken ships
-        */
+ * @author blake richmeier
+ * @version 2
+ * when called this board will replace the buffer board with a board printing player1array,
+ * but showing all hits, misses, unhit ships and sunken ships
+ */
 function showPlayer1ships() {
     context.fillText("Your ships", 245, 580);
     player_1_turn = true
@@ -262,45 +238,35 @@ function showPlayer1ships() {
             image.src = 'images/fire.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else if (player1array[i] == 'miss') {
+        } else if (player1array[i] == 'miss') {
             var image = document.createElement('img')
             image.src = 'images/water.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else if (player1array[i] == 'ship') {
+        } else if (player1array[i] == 'ship') {
             var image = document.createElement('img')
-            if (player_ships_placed.player1.charAt(i) == 1)
-            {
+            if (player_ships_placed.player1.charAt(i) == 1) {
                 image.src = 'images/ship1.png';
-            }
-            else if (player_ships_placed.player1.charAt(i) == 2) {
+            } else if (player_ships_placed.player1.charAt(i) == 2) {
                 image.src = 'images/ship2.png';
-            }
-            else if (player_ships_placed.player1.charAt(i) == 3) {
+            } else if (player_ships_placed.player1.charAt(i) == 3) {
                 image.src = 'images/ship3.png';
-            }
-            else if (player_ships_placed.player1.charAt(i) == 4) {
+            } else if (player_ships_placed.player1.charAt(i) == 4) {
                 image.src = 'images/ship4.png';
-            }
-            else if (player_ships_placed.player1.charAt(i) == 5) {
+            } else if (player_ships_placed.player1.charAt(i) == 5) {
                 image.src = 'images/ship5.png';
-            }
-            else if (player_ships_placed.player1.charAt(i) == 6) {
+            } else if (player_ships_placed.player1.charAt(i) == 6) {
                 image.src = 'images/ship6.png';
             }
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
 
-        }
-        else if (player1array[i] == 'sunk') {
+        } else if (player1array[i] == 'sunk') {
             var image = document.createElement('img')
             image.src = 'images/sunken.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else {
+        } else {
             var image = document.createElement('img')
             image.src = 'images/blank.png'
             document.getElementById(i).innerHTML = ''
@@ -325,11 +291,11 @@ function showPlayer1ships() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * when called this board will replace the buffer board with a board printing
-        * player2array showing hits, misses, but hiding where the unhit ships are
-        */
+ * @author blake richmeier
+ * @version 2
+ * when called this board will replace the buffer board with a board printing
+ * player2array showing hits, misses, but hiding where the unhit ships are
+ */
 function showPlayer2board() {
     context.fillText("Your ships", 1260, 580);
     console.log("player 2 board")
@@ -339,20 +305,17 @@ function showPlayer2board() {
             image.src = 'images/fire.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else if (player1array[i] == 'miss') {
+        } else if (player1array[i] == 'miss') {
             var image = document.createElement('img')
             image.src = 'images/water.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else if (player1array[i] == 'sunk') {
+        } else if (player1array[i] == 'sunk') {
             var image = document.createElement('img')
             image.src = 'images/sunken.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else {
+        } else {
             var image = document.createElement('img')
             image.src = 'images/team10.png'
             document.getElementById(i).innerHTML = ''
@@ -362,11 +325,11 @@ function showPlayer2board() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * when called this board will replace the buffer board with a board printing player1array,
-        * but showing all hits, misses, unhit ships and sunken ships
-        */
+ * @author blake richmeier
+ * @version 2
+ * when called this board will replace the buffer board with a board printing player1array,
+ * but showing all hits, misses, unhit ships and sunken ships
+ */
 function showPlayer2Ships() {
     context.fillText("Guess Opposing ship here", 215, 580);
     player_2_turn = true
@@ -377,43 +340,34 @@ function showPlayer2Ships() {
             image.src = 'images/fire.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else if (player2array[i - 90] == 'miss') {
+        } else if (player2array[i - 90] == 'miss') {
             var image = document.createElement('img')
             image.src = 'images/water.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else if (player2array[i - 90] == 'ship') {
+        } else if (player2array[i - 90] == 'ship') {
             var image = document.createElement('img')
             if (player_ships_placed.player2.charAt(i - 90) == 1) {
                 image.src = 'images/ship1.png';
-            }
-            else if (player_ships_placed.player2.charAt(i - 90) == 2) {
+            } else if (player_ships_placed.player2.charAt(i - 90) == 2) {
                 image.src = 'images/ship2.png';
-            }
-            else if (player_ships_placed.player2.charAt(i - 90) == 3) {
+            } else if (player_ships_placed.player2.charAt(i - 90) == 3) {
                 image.src = 'images/ship3.png';
-            }
-            else if (player_ships_placed.player2.charAt(i - 90) == 4) {
+            } else if (player_ships_placed.player2.charAt(i - 90) == 4) {
                 image.src = 'images/ship4.png';
-            }
-            else if (player_ships_placed.player2.charAt(i - 90) == 5) {
+            } else if (player_ships_placed.player2.charAt(i - 90) == 5) {
                 image.src = 'images/ship5.png';
-            }
-            else if (player_ships_placed.player2.charAt(i - 90) == 6) {
+            } else if (player_ships_placed.player2.charAt(i - 90) == 6) {
                 image.src = 'images/ship6.png';
             }
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else if (player2array[i - 90] == 'sunk') {
+        } else if (player2array[i - 90] == 'sunk') {
             var image = document.createElement('img')
             image.src = 'images/sunken.png'
             document.getElementById(i).innerHTML = ''
             document.getElementById(i).appendChild(image)
-        }
-        else {
+        } else {
             var image = document.createElement('img')
             image.src = 'images/blank.png'
             document.getElementById(i).innerHTML = ''
@@ -440,11 +394,11 @@ function showPlayer2Ships() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * when called this function will print a buffer board so that players can pass
-        * the laptop back and forth to each other without seeing ship placement
-        */
+ * @author blake richmeier
+ * @version 2
+ * when called this function will print a buffer board so that players can pass
+ * the laptop back and forth to each other without seeing ship placement
+ */
 function buffer() {
 
     in_buffer = true;
@@ -473,15 +427,13 @@ function buffer() {
             if (combat_turn % 2 == 0) {
                 showPlayer1board()
                 showPlayer1ships()
-            }
-            else {
+            } else {
                 showPlayer2Ships()
                 showPlayer2board()
             }
             if (player_1_turn) {
                 context.fillText("Player 1", 760, 50);
-            }
-            else {
+            } else {
                 context.fillText("Player 2", 760, 50);
             }
             body.removeChild(leave_buffer_button)
@@ -492,12 +444,12 @@ function buffer() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * this function will look at the length of the arrays that are keeping track of hits
-        * on any given length ship. When the length = the number of the ship (i.e. length 5 ship has been hit
-        * 5 times) then the function will call checkSunkHelper
-        */
+ * @author blake richmeier
+ * @version 2
+ * this function will look at the length of the arrays that are keeping track of hits
+ * on any given length ship. When the length = the number of the ship (i.e. length 5 ship has been hit
+ * 5 times) then the function will call checkSunkHelper
+ */
 function checkSunk() {
     if (p1_1.length == 1) {
         checkSunkHelper(true, 1)
@@ -538,21 +490,20 @@ function checkSunk() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * this function will loop through the player array as well as the string from the boat_selection class and
-        * change 'hit' to 'sunk' for the target number. Both arrays were needed to keep track of where the numbers were
-        * so that no info is lost while changing
-        * @see boat_selection.js player1, player2
-        */
+ * @author blake richmeier
+ * @version 2
+ * this function will loop through the player array as well as the string from the boat_selection class and
+ * change 'hit' to 'sunk' for the target number. Both arrays were needed to keep track of where the numbers were
+ * so that no info is lost while changing
+ * @see boat_selection.js player1, player2
+ */
 function checkSunkHelper(isPlayerOne1, target) {
     for (let i = 0; i < 80; i++) {
         if (isPlayerOne1) {
             if (player_ships_placed.player1.charAt(i) == target) {
                 player1array[i] = 'sunk'
             }
-        }
-        else {
+        } else {
             if (player_ships_placed.player2.charAt(i) == target) {
                 player2array[i] = 'sunk'
             }
@@ -563,10 +514,10 @@ function checkSunkHelper(isPlayerOne1, target) {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * this function loops through the player arrays to see if the word ship is gone
-        */
+ * @author blake richmeier
+ * @version 2
+ * this function loops through the player arrays to see if the word ship is gone
+ */
 function check_game_over_player_1() {
     game_over = true
     for (let i = 0; i < 90; i++) {
@@ -581,10 +532,10 @@ function check_game_over_player_1() {
 }
 
 /**
-        * @author blake richmeier
-        * @version 2
-        * this function loops through the player arrays to see if the word ship is gone
-        */
+ * @author blake richmeier
+ * @version 2
+ * this function loops through the player arrays to see if the word ship is gone
+ */
 function check_game_over_player_2() {
     game_over2 = true
     for (let i = 0; i < 90; i++) {
